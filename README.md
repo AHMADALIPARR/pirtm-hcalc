@@ -475,6 +475,12 @@ If you are new to the repo, the practical reading order is:
 
 ---
 
+## Concrete code examples
+
+Real snippets from Lean, J, MLIR, and Quipper (Bell / adversarial pair, nested `hcalc_step`, custom dialect ops, circuit lists, and the float↔exact `near` bridge) live in **[EXAMPLES.md](EXAMPLES.md)**.
+
+---
+
 ## License & Provenance
 
 AGPL-3.0-only (and SnapKitty Opaque dual notice). Ported from PIRTM@e9caa0d / HCALC@4854e7b. See `PORT_MAP.md` for the complete file-level mapping and `GAPS.md` for every approximation, axiom, and deliberate omission.
