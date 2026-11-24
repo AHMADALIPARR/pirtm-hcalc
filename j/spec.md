@@ -1,5 +1,5 @@
-Copyright (C) 2026 Foundry / Prime Materia Commons
-  SPDX-License-Identifier: AGPL-3.0-or-later
+Copyright (C) 2026 Foundry  
+SPDX-License-Identifier: AGPL-3.0-or-later
 
   This file is part of Foundry F1 Pure-J Core.
   License: GNU Affero General Public License v3.0 or later.
