@@ -1,0 +1,27 @@
+// goldilocks_add_mul.mlir — example: a J computation lowered to the
+// foundry dialect. Unvalidated on this box: no mlir-opt is installed here,
+// so this file has not been run through mlir-opt. Structural checks only:
+// balanced braces, every op defined in mlir/dialect/FoundryDialect.td.
+//
+// J source (locale 'foundry', goldilocks.ijs):
+//   s =. a fp_add b
+//   m =. s fp_mul c
+//   r =. fp_reduce m
+//
+// The second function is the certification step: the harness record, a
+// byte string, through the NASM mask gate (foundry.sha256_mask), which
+// lowers to a call to sha256_hash in mlir/mask-gate/sha256.asm.
+
+module {
+  func.func @goldilocks_add_mul(%a: !foundry.fp, %b: !foundry.fp, %c: !foundry.fp) -> !foundry.fp {
+    %s = "foundry.fp_add"(%a, %b) : (!foundry.fp, !foundry.fp) -> !foundry.fp
+    %m = "foundry.fp_mul"(%s, %c) : (!foundry.fp, !foundry.fp) -> !foundry.fp
+    %r = "foundry.fp_reduce"(%m) : (!foundry.fp) -> !foundry.fp
+    func.return %r : !foundry.fp
+  }
+
+  func.func @certify_record(%record: tensor<?xi8>) -> tensor<32xi8> {
+    %digest = "foundry.sha256_mask"(%record) : (tensor<?xi8>) -> tensor<32xi8>
+    func.return %digest : tensor<32xi8>
+  }
+}
