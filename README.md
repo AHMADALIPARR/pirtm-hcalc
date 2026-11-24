@@ -363,10 +363,10 @@ pirtm-hcalc  adversarial pair  seed=11
 
 The axes are schematic: orthogonality is a property of the inner product in the full Hilbert space, not a physical direction in three-dimensional space. Write $\rho^{(i)}=|\psi_i\rangle\langle\psi_i|$ for the pure-state density operator. The observer retains qubit zero and traces out the ten remaining qubits:
 
-$$
+
 \rho_0^{(i)}=\operatorname{Tr}_{1,\ldots,10}(\rho^{(i)})
 =\frac{1}{2}\begin{pmatrix}1&0\\0&1\end{pmatrix}.
-$$
+
 
 $$
 F(\psi_1,\psi_2)=|\langle\psi_1|\psi_2\rangle|^2=0,
