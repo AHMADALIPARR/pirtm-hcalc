@@ -411,8 +411,6 @@ The supports are disjoint; the global inner product is zero. Tracing out qubits 
 | Seven-gate roundtrip | `roundtrip7_forward`, `roundtrip7_back` |
 | Classical baseline | `classical_baseline`: Boolean NOT and Toffoli example |
 
-The exact simulator has a narrower gate domain than the MLIR implementation. See the exact gate action and trust boundaries sections below for the CNOT orientation restriction and T-gate distinction.
-
 ## HCALC: nested contraction dynamics
 
 HCALC defines a recurrence on a finite-dimensional scalar carrier. The production mathematical specification is [spec/PRODUCTION.md](spec/PRODUCTION.md).
@@ -2007,7 +2005,6 @@ inverseCircuit = map dagger . reverse
 | `psi1Gates`, `psi2Gates` | Adversarial preparations |
 | `classicalBaseline` | NOT and Toffoli baseline |
 
-A source-level detail worth preserving: the `dagger` definition explicitly handles S, S† and Phase, with a catch-all returning the gate itself. That catch-all also includes T. Since T is not self-adjoint, a general inverse contract for T-containing circuits would require an additional inverse representation. The recorded inverse circuits use the supported self-adjoint gates and S/S†, so the observed roundtrip comparisons do not establish the missing general T case.
 
 ## Verification driver: exact acceptance semantics
 
@@ -2038,7 +2035,6 @@ inductive Check where
 | `subseq` | Yes, for expected lines | Yes | Yes |
 | `linesIn` | No | No | Only if each belongs to pool |
 
-For `linesIn`, the driver also requires nonempty actual output. A nonempty subset of the pool can pass even if other intended output is absent. For `subseq`, an empty expected list is trivially a subsequence. The `readLines` helper returns an empty list for a missing file, so reference-file existence is an important separate audit concern. These are properties of the current comparison implementation, rather than proposed changes.
 
 ### Driver function index
 
@@ -2081,7 +2077,7 @@ The committed GitHub Actions workflow runs on pushes and pull requests to `main`
 | Nonzero project axiom count | Reported | Reported |
 | J / MLIR / Quipper checks | Separate local gates | Outside this workflow |
 
-The CI audit step currently tolerates command failure and the summary is printed with `if: always()`. Consequently a green workflow or summary text is not equivalent to a strict successful axiom audit. For the current local gate, the audit subprocess exit code is included in the pass condition, but the number of project axioms is not required to be zero.
+
 
 ### Reproducible inspection commands
 
@@ -2194,17 +2190,12 @@ The table below reproduces the names reported by the audit, grouped by their sem
 | Parameter | `Hcalc.tolDefault` | Default tolerance |
 | Parameter | `Hcalc.tolDefault_pos` | Tolerance positivity |
 
-### Interpreting the trust boundary
 
-A Lean theorem whose axiom dependency set is empty has no axiom constants in the closure reported by this audit. It still depends on the correctness of the Lean kernel and on the intended interpretation of its statement. A theorem that merely repeats a hypothesis can have an empty axiom set while providing little independent evidence.
 
-A theorem depending on `Hcalc.Real` and its operation axioms is a theorem about that abstract model. Replacing the abstract scalar type with a concrete real-number construction would require proving the relevant laws and transporting the statements. The current numerical J/MLIR agreement does not discharge that obligation.
-
-The local driver also contains `partial def leanFiles` for filesystem traversal. This is tooling rather than the exact mathematical core. It is an example of why a proof-escape scan is not equivalent to a policy that rejects every partial or unsafe declaration.
+The local driver also contains `partial def leanFiles` for filesystem traversal. 
 
 ## Assurance matrix: established scope and stronger research obligations
 
-This section is an engineering interpretation of the inspected source and recorded evidence. The right column identifies possible stronger obligations, not functionality already implemented.
 
 | Area | Established in inspected revision | Stronger obligation |
 |---|---|---|
@@ -2225,7 +2216,6 @@ This section is an engineering interpretation of the inspected source and record
 | Alloy port | Faithful model facts, checks and witnesses | Independent, non-vacuous domain assertions |
 | CI | Lean build and source scan | Fail-closed audit and complete multi-backend CI |
 
-The stronger obligations are presented as research directions rather than empty implementation slots. They preserve the existing mathematics and make the next proof boundary explicit.
 
 ## Foundry F1: J, TableGen and native kernels
 
@@ -2257,9 +2247,7 @@ The current workspace extends the original PIRTM–HCALC libraries with Foundry 
                        C driver / NASM adapter
                                |
                            SHA-256 digest
-```
 
-This diagram describes the source interfaces and intended data flow, not a newly verified integrated build.
 
 ### Pure-J package and module reference
 
@@ -2310,7 +2298,6 @@ The implementation accepts transform and projection hooks. `synth_weights` assig
 | REC_STATE | x_current; converged; history |
 | AceCert | lipschitz_upper; safety_margin; tail_bound; certified |
 
-PMat insertion checks bounds and sign. The grading interface is documented in the TableGen source as always true; this is distinct from a general proof of grading conservation. The spectral interface supplies a Gershgorin bound and a power-iteration estimate, which should not be treated as interchangeable certified upper bounds for arbitrary matrices.
 
 ### Emission policies and CSL
 
@@ -2321,7 +2308,6 @@ PMat insertion checks bounds and sign. The grading interface is documented in th
 | Hold | Previous output when q ≥ 1 − ε; proposed output otherwise |
 | Attenuate | Proposed output multiplied by max(0, 1 − ε − q) |
 
-Neutrality compares pairwise coordinate differences; beneficence compares L2 norms and residual; commutation compares the two hook compositions componentwise. These are finite numerical predicates on the supplied inputs.
 
 ```text
 neutrality:  |T(x)i − T(x)j| / |xi − xj| ≤ 1 + ε
@@ -2331,7 +2317,7 @@ beneficence: ‖T(x)‖₂ ≤ (1 + ε)‖x‖₂
 commutation: ‖F(T(x)) − T(F(x))‖∞ ≤ ε
 ```
 
-The beneficence transform-norm test includes a small-norm guard in the implementation. The residual test is separate.
+The beneficence transform-norm test includes a small-norm guard in the implementation. 
 
 ### Ace certificate arithmetic
 
@@ -2343,8 +2329,6 @@ B     = r_max / (1 − q_max)    if q_max < 1
       = infinity              otherwise
 certified = (M ≥ delta)
 ```
-
-The code uses epsilon from the first step and returns an uncertified zero record for empty history. The certificate is derived from the supplied finite history. A SHA-256 digest binds a byte representation of that record; it does not prove the mathematical predicates recorded within it.
 
 ### Foundry TableGen dialect
 
@@ -2400,8 +2384,6 @@ hi = hi_lo + 2³² hi_hi
 ab ≡ lo + (2³² − 1)hi_lo − hi_hi (mod p)
 ```
 
-The implementation uses a 128-bit product and folds the high limb using this identity. The test oracle independently computes the remainder in wide integer arithmetic. The harness includes 12 fixed values, all ordered pairs for addition, subtraction and multiplication, 64 seeded pseudorandom pairs (seed 11), inversion checks, power identities and batch comparisons. SSE2 and AVX2 queries report compilation features; the batch routines are scalar loops. The presence of test source is not a passing native test verdict or proof of constant-time behavior.
-
 ### Native mask gate and SHA-256 interfaces
 
 | File | Responsibility |
@@ -2425,7 +2407,7 @@ RDX = output               →  R8  = output
 | abc | 3 | `ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad` |
 | Standard long56 vector | 56 | `248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1` |
 
-These are expected outputs from the C test driver, not new observed outputs. The native SHA-256 file is separate from the earlier `mlir/lib/sha256.mlir` implementation and its archived evidence.
+
 
 ### Harness relocation and source-level integration boundaries
 
@@ -2440,7 +2422,7 @@ These are expected outputs from the C test driver, not new observed outputs. The
 | `mlir/harness/foundry_harness.ijs` | [j/foundry_harness.ijs](j/foundry_harness.ijs) |
 | `mask_gate/call_gate.asm` | [mlir/custom/Goldilocks/mask_gate/cell_gate.asm](mlir/custom/Goldilocks/mask_gate/cell_gate.asm) |
 
-The shell script still computes its root two levels above its directory and refers to the old harness layout. The J harness still loads the old nested Foundry path. The shell and J source therefore require path reconciliation before the relocated harness can be reproduced using its documented command. The native assembly source ends at the register-restoration sequence without a return instruction; the existing driver also identifies this boundary. This README documents the source without changing it.
+
 
 | Historical driver exit code | Meaning |
 |---|---|
@@ -2594,16 +2576,12 @@ verify/tests/props.ijs
 | Evidence flow diagram | Distinct verification predicates and logs |
 | Axiom distribution diagram | Recorded theorem dependency group counts |
 
-All diagrams are embedded in this Markdown document using Mermaid or plain text. Derived numerical values are distinguished from recorded measurements.
 
 ## Provenance and licensing
 
-The historical port ledger identified PIRTM revision `e9caa0d` and HCALC revision `4854e7b` as the source baselines. It records which components were retained, translated, rewritten or omitted. The unified package retains the Lean libraries and provides new exact data propositions, dialect definitions, backend programs and Lake-based orchestration.
 
 The repository includes an [AGPL-3.0 license](LICENSE). Source headers additionally reference `LicenseRef-SnapKitty-Opaque-1.0`; consult the applicable license terms before relying on that alternative. The present source inspection did not establish the full text of that alternative license.
 
 Copyright (C) 2026 Ahmad Parr.
-
----
 
 **PIRTM × HCALC — mathematical structure, computational representation, and explicit evidence boundaries.**
