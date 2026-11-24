@@ -364,10 +364,6 @@ pirtm-hcalc  adversarial pair  seed=11
 The axes are schematic: orthogonality is a property of the inner product in the full Hilbert space, not a physical direction in three-dimensional space. Write $\rho^{(i)}=|\psi_i\rangle\langle\psi_i|$ for the pure-state density operator. The observer retains qubit zero and traces out the ten remaining qubits:
 
 
-\rho_0^{(i)}=\operatorname{Tr}_{1,\ldots,10}(\rho^{(i)})
-=\frac{1}{2}\begin{pmatrix}1&0\\0&1\end{pmatrix}.
-
-
 $$
 F(\psi_1,\psi_2)=|\langle\psi_1|\psi_2\rangle|^2=0,
 \qquad \frac12\|\rho_0^{(1)}-\rho_0^{(2)}\|_1=0.
@@ -1276,11 +1272,6 @@ pirtm-hcalc  iteration residual  seed=11
 The supplied ASCII profile illustrates decay qualitatively. Its glyph heights are not calibrated measurements. The table below reconstructs the ideal default recurrence for the logged five-coordinate initial vector, using the actual first five prime weights. The recorded run remains the authority for its own stopping residual.
 
 $$
-X_{t+1}=D X_t,\qquad D=\operatorname{diag}(\alpha_0,\ldots,\alpha_4),
-\qquad X_t=D^tX_0.
-$$
-
-$$
 R_t=\|X_t-X_{t+1}\|_\infty,
 \qquad R_{t+1}\leq \|D\|_\infty R_t.
 $$
@@ -1319,11 +1310,6 @@ $$
 
 For a contraction $F$ with Lipschitz constant $0\le q<1$ and a fixed point $x^*$, the triangle inequality gives
 
-$$
-\|x-x^*\|\le \|x-F(x)\|+q\|x-x^*\|.
-$$
-
-Hence
 
 $$
 \|x-x^*\|\le \frac{\|x-F(x)\|}{1-q}.
