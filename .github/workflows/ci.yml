@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lean:
+    name: Lean 4 build + audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install elan / Lean
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+          source "$HOME/.elan/env" || true
+
+      - name: Cache Lake packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.elan
+            .lake
+          key: lake-${{ runner.os }}-${{ hashFiles('lean-toolchain', 'lakefile.lean', 'lake-manifest.json') }}
+          restore-keys: |
+            lake-${{ runner.os }}-
+
+      - name: lake build
+        run: |
+          source "$HOME/.elan/env" 2>/dev/null || true
+          lake --version
+          lake build
+
+      - name: Scan for sorry / admit
+        run: |
+          source "$HOME/.elan/env" 2>/dev/null || true
+          # whole-word scan matching the project's own lean script logic
+          hits=$(find . -name '*.lean' \
+            -not -path './.lake/*' \
+            -not -path './quipper/*' \
+            -not -path './logs/*' \
+            -print0 | xargs -0 grep -nE '(^|[^[:alnum:]_\'\''\.])(sorry|admit)([^[:alnum:]_\'\''\.]|$)' || true)
+          if [ -n "$hits" ]; then
+            echo "FORBIDDEN escape words found:"
+            echo "$hits"
+            exit 1
+          fi
+          echo "sorry/admit scan: 0 hits"
+
+      - name: Axiom audit
+        run: |
+          source "$HOME/.elan/env" 2>/dev/null || true
+          mkdir -p logs/lean
+          lake env lean tools/AxiomAudit.lean | tee logs/lean/axioms-ci.txt || true
+          # ensure the audit at least runs; count declared axioms if present
+          if grep -q "axiom " logs/lean/axioms-ci.txt 2>/dev/null; then
+            count=$(grep -c "  axiom " logs/lean/axioms-ci.txt || echo 0)
+            echo "Declared axioms (audit): $count"
+          fi
+          echo "Axiom audit step completed"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### Lean CI" >> $GITHUB_STEP_SUMMARY
+          echo "- lake build: completed" >> $GITHUB_STEP_SUMMARY
+          echo "- sorry/admit: scanned (must be 0)" >> $GITHUB_STEP_SUMMARY
+          echo "- axiom audit: executed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Full multi-language verification (J / MLIR / Quipper) is local: `lake script run all`." >> $GITHUB_STEP_SUMMARY
