@@ -1519,7 +1519,7 @@ The exponent decreases by division by two; recursion is structurally bounded by 
 | `gl_pow` | Base, exponent | Modular power |
 | `gl_inv` | Residue | Inverse routine result |
 
-The modulus exceeds the signed 64-bit maximum. The IR uses `i64` bit patterns to represent unsigned residues. A caller must preserve unsigned interpretation where required; the bit width alone does not determine signedness. The inverse is mathematically meaningful for nonzero field elements. The concrete inverse test uses a nonzero input.
+
 
 ## MLIR implementation atlas
 
@@ -1705,7 +1705,6 @@ The `lowerFlags` array in `lakefile.lean` defines the following sequence:
 | 9 | `--convert-cf-to-llvm` |
 | 10 | `--reconcile-unrealized-casts` |
 
-The driver writes input and lowered files under `.lake/mlir`, then invokes `mlir-cpu-runner` with entry point `main`, an `i32` result and the configured runner library. The runner result line is stripped before comparison by `dropRunnerResult`.
 
 ## Oracle, retrieval and bounded reasoning: detailed subsystem reference
 
@@ -1718,9 +1717,6 @@ Payload and metadata ──→ Tokenization and FNV-1a
 Tokenization and FNV-1a ──→ 64-dimensional embedding
 64-dimensional embedding ──→ Retrieval ranking
 ```
-
-
-The oracle provides software data handling for the bounded reasoning examples. Its content-addressed store associates byte payloads with digests and metadata; retrieval adds a deterministic token and embedding path. These functions are distinct from the Lean proof kernel.
 
 ### Content-addressed store API
 
@@ -1757,7 +1753,7 @@ Source: [`mlir/lib/oracle.mlir`](mlir/lib/oracle.mlir).
 | `embed` | 64-element embedding |
 | `retrieve` | Query and domain-filtered retrieval |
 
-The in-memory store is bounded. A digest match and integrity check establish the behavior tested by the example; they do not establish authenticated authorship, durable storage, collision impossibility or a complete access-control system.
+
 
 ### SHA-256 recorded test vectors
 
@@ -1768,7 +1764,6 @@ The SHA-256 module exposes `rotr`, `sha256` and `digest_eq`. Its output buffer i
 | ASCII `abc` | `ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad` |
 | Empty byte sequence | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 
-The oracle log additionally records same-digest reinsertion, successful byte roundtrip, creator metadata comparison and integrity verification. These are concrete tests, not a Lean proof of SHA-256.
 
 ### Retrieval observations
 
@@ -1778,7 +1773,6 @@ The oracle log additionally records same-digest reinsertion, successful byte rou
 | `transformation` | `domain=causality` | 0.0 |
 | `quantum unitarity` | None | 0.0, 0.0 |
 
-The 64-element embedding is reported deterministic and distinct for the tested examples. The port substitutes FNV-1a for the original salted Python hash. The documented comparisons cover the reference corpus and selected hash seeds; arbitrary ranking equivalence is outside the established evidence.
 
 ### Recursive engine API
 
@@ -1815,7 +1809,7 @@ Source: [`mlir/main/engine.mlir`](mlir/main/engine.mlir).
 | Moon.madeOfCheese is asserted as true | `COUNTERMODEL_FOUND` |
 | Unitary gates preserve inner products | `TESTED` |
 
-The combined scenario preserves the contradiction record, and the deduplication test reports the same identifier with registry size one. The status `TESTED` is not a kernel proof of the natural-language sentence. It is a software status in the reasoning example.
+
 
 ## Formal model ports: obligation-by-obligation interpretation
 
@@ -1837,7 +1831,7 @@ Source: [`PirtmHcalc/Agda/Invariants.lean`](PirtmHcalc/Agda/Invariants.lean).
 | I10 | `I10_agent_isolation` | Different agent identifiers imply different records |
 | I11 | `I11_evidence_classification` | No certificate implies status differs from Verified in this model |
 
-Several statements are deliberately faithful ports of weak structural claims. Their proof strength must be read from their propositions rather than from their titles. I06 is a tautology, I04 is congruence of a record field, and I07/I08 extract supplied witnesses. The concrete exact quantum experiments provide additional evidence, but do not transform those structural propositions into universal matrix-level correctness theorems.
+
 
 ### Bounded termination contract
 
