@@ -1,0 +1,34 @@
+======================================================================
+PIRTM Ω-AKASHA XI: CENTRAL ADVERSARIAL COMPUTATIONAL EXPERIMENT
+State space: 11 qubits, 2,048 complex amplitudes
+======================================================================
+
+[CENTRAL ADVERSARIAL EXPERIMENT RESULTS]
+State Dimension: 2048
+Global overlap fidelity |<Psi_1|Psi_2>|^2: 0.000000e+00
+Global observer distinguishable: True (100% distinguishable)
+Reduced trace distance on Qubit 0: 0.000000e+00
+Subsystem observer distinguishable: False (0% distinguishable)
+Observer probabilities for Psi_1: [0.4999999999999999, 0.4999999999999999]
+Observer probabilities for Psi_2: [0.4999999999999999, 0.4999999999999999]
+
+Conclusion: Restricted observer cannot distinguish Psi_1 from Psi_2 locally, but global observer distinguishes with certainty.
+
+======================================================================
+EXECUTING 11 CONCURRENT REASONING WORKERS
+======================================================================
+[A01] Temporal state transitions               Tests: 3 passed | Status: VERIFIED_LOCALLY
+[A02] Reversible quantum evolution             Tests: 2 passed | Status: VERIFIED_LOCALLY
+[A03] Eleven-coordinate state transformations  Tests: 1 passed | Status: VERIFIED_LOCALLY
+[A04] Quantum measurement distributions        Tests: 2 passed | Status: VERIFIED_LOCALLY
+[A05] Historical encoding and decoding         Tests: 2 passed | Status: VERIFIED_LOCALLY
+[A06] Symbolic historical-interpretation ambiguity Tests: 1 passed | Status: REJECTED_AS_PHYSICAL_PREDICTOR
+[A07] Recursive hypothesis revision            Tests: 1 passed | Status: VERIFIED_LOCALLY
+[A08] Restricted observer reconstruction       Tests: 1 passed | Status: VERIFIED_LOCALLY
+[A09] Entropy and information bounds           Tests: 2 passed | Status: VERIFIED_LOCALLY
+[A10] Agda invariant verification              Tests: 0 passed | Status: NOT_RUN
+[A11] Adversarial counterexample generation    Tests: 2 passed | Status: VERIFIED_LOCALLY
+
+Total Artifacts Generated & Indexed in CAS: 11
+Ledger Integrity Validated: True
+======================================================================

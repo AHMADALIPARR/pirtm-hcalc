@@ -1,0 +1,23 @@
+cabal-version:       2.4
+-- SPDX-License-Identifier: AGPL-3.0-only
+-- Also licensed under the SnapKitty Opaque License (LicenseRef-SnapKitty-Opaque-1.0); see README.md.
+-- Copyright (C) 2026 Ahmad Parr
+name:                pirtm-quipper
+version:             0.1.0
+synopsis:            Quipper circuits for the PIRTM quantum layer
+license:             AGPL-3.0-only
+build-type:          Simple
+
+executable pirtm-quipper
+  main-is:             Main.hs
+  hs-source-dirs:      src
+  other-modules:       PirtmCircuits, Analysis
+  build-depends:       base >= 4.13 && < 4.14,
+                       containers,
+                       random,
+                       newsynth,
+                       quipper-language == 0.9.0.0,
+                       quipper-libraries == 0.9.0.0,
+                       quipper-utils == 0.9.0.0
+  default-language:    Haskell2010
+  ghc-options:         -Wall -Wno-name-shadowing -Wno-unused-do-bind

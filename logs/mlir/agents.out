@@ -1,0 +1,25 @@
+== scheduler: dispatch_cycle(round=1), 11 workers, deterministic merge
+A01 1 3 0 0 VERIFIED_LOCALLY b994703f65a07da6482bd77cd9b579e4ccd34a8ae4ae7eba47c086ed68681d0d
+   'Temporal State Transitions: 11-qubit DAG transitions=3, transition_fidelities=[0.4999999999999999, 0.12499999999999994, 0.1249999999999999]'
+A02 1 2 0 0 VERIFIED_LOCALLY a03f895153362c683230c073b48de99438cc6f5c9877718cf7b24f017b0c9a49
+   'Reversible 11-Qubit Evolution: norm=1.000000, roundtrip_fidelity=1.00000000'
+A03 1 1 0 0 VERIFIED_LOCALLY 78049db516abc9534e2cb348ea2df8c22eb75598ea4bc8d49598f93393e2cc60
+   '11-Coordinate Hadamard Transformation: 2048-dim uniform superposition verified=True, max_err=1.73e-17'
+A04 4 2 0 0 VERIFIED_LOCALLY c009c6bbce0cc17fa610a4534c5e92d15ae2d320adb1ea102bcbaefa12838eab
+   '11-Qubit Born Rule Probabilities: total_prob=1.00000000, active_outcomes=2'
+A05 5 2 0 0 VERIFIED_LOCALLY 87d455c3270cb370ba1394b6db4751aa4558541c05fbea5e47d37dc732644d3e
+   'Historical Encoding Experiment: full_recovery_fidelity=1.00000000, restricted_subsystem_trace_rho00=0.5000'
+A06 6 1 0 0 REJECTED_AS_PHYSICAL_PREDICTOR 8e54109f1b8a163b36048e3f8b6d65a5a96e483508f6db2a4f825c60f24772ae
+   'Quantitative Ambiguity Scoring: tokens=16, unique=15, lexical_entropy_ratio=0.9375, status=SPECULATION'
+A07 5 1 0 0 VERIFIED_LOCALLY c6f6496e5974d22a2f6f2fe40d90f2facb183626d871b264cb76d71b943eeec4
+   'Recursive Hypothesis Revision: round=1, fuel_remaining=3, converged=False'
+A08 6 1 0 0 VERIFIED_LOCALLY 6c216e6faa5ab774c5010a9274102302cae1b22a206e78010834e314eacaab88
+   'Restricted Observer Subsystem: purity=0.5000, mixed_state_loss=True'
+A09 1 2 0 0 VERIFIED_LOCALLY 9414be6eba22b5374af16086fc6622c3bd5108e6f53524e39bea0ef2aba63bd6
+   'Subsystem Entropy Bound: von_neumann_entropy=1.0000 bits, bound_capacity=1.0 bit'
+A10 2 0 0 11 NOT_RUN a26ba86e3ae62caa252121cc24ca826cb94ec5b63113bd7779a93f43f3fc4bf3
+   'Agda Invariant Verification: Status=NOT_RUN. Required command: `agda --no-libraries -i . agda/PIRTM/Invariants.agda`. Formal Invariants defined: I01 to I11 in agda/PIRTM/Invariants.agda.'
+A11 1 2 0 0 VERIFIED_LOCALLY 25e768b73f71f3d4e4e76ff39c36f127142af9b6add9451c7d81e7da98350308
+   'Central Adversarial Experiment: global_distinguishable=True, subsystem_distinguishable=False, trace_distance=0.0, passed=True'
+passed 17 failed 0 artifacts 11 ledger True
+invariants ['I01', 'I01 — State preservation', 'I02', 'I02 — Causal ordering', 'I03', 'I04', 'I05', 'I05 — Termination', 'I06', 'I06 — Quantum unitarity', 'I07', 'I07 — Probability normalization', 'I08', 'I08 — Encoding integrity', 'I09', 'I09 — Observation boundaries', 'I10', 'I11', 'I11 — Evidence classification']

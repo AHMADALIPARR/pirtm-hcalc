@@ -1,0 +1,18 @@
+ hypo H_6b26c4e28b47 'Causal graphs are acyclic'
+ round 1 fuel 3 eval 1 contra 0 conv True ev ['fe711472f2380660badad0293bacaf382b841cbcc3bdae0a4bd169a3d5ab5e4d']
+ status H_6b26c4e28b47 TESTED 0 0
+ doc fe711472f2380660badad0293bacaf382b841cbcc3bdae0a4bd169a3d5ab5e4d 'Evidence[R1:H_6b26c4e28b47]: status=TESTED, model=Mathematical model for Causal graphs are acyclic: validated against retrieved context 0 items.'
+ hypo H_5712c3e12f49 'Moon.madeOfCheese is asserted as true'
+ round 1 fuel 3 eval 1 contra 1 conv True ev ['030b085155bf01d98bddc29497b754622183f96d4ff4f0d67908df2ad841affc']
+ status H_5712c3e12f49 COUNTERMODEL_FOUND 1 1
+ doc 030b085155bf01d98bddc29497b754622183f96d4ff4f0d67908df2ad841affc 'Evidence[R1:H_5712c3e12f49]: status=COUNTERMODEL_FOUND, model=Mathematical model for Moon.madeOfCheese is asserted as true: validated against retrieved context 0 items.'
+ hypo H_6b26c4e28b47 'Causal graphs are acyclic'
+ hypo H_5712c3e12f49 'Moon.madeOfCheese is asserted as true'
+ hypo H_2b4a6b8c488a 'Unitary gates preserve inner products'
+ round 1 fuel 3 eval 3 contra 1 conv True ev ['fe711472f2380660badad0293bacaf382b841cbcc3bdae0a4bd169a3d5ab5e4d', '030b085155bf01d98bddc29497b754622183f96d4ff4f0d67908df2ad841affc', 'cbe45f32f768866084807f96bc9e5c56537cb000697a16e0705dc35420b340f1']
+ status H_6b26c4e28b47 TESTED 0 0
+ status H_5712c3e12f49 COUNTERMODEL_FOUND 1 1
+ status H_2b4a6b8c488a TESTED 0 0
+ doc fe711472f2380660badad0293bacaf382b841cbcc3bdae0a4bd169a3d5ab5e4d 'Evidence[R1:H_6b26c4e28b47]: status=TESTED, model=Mathematical model for Causal graphs are acyclic: validated against retrieved context 0 items.'
+ doc 030b085155bf01d98bddc29497b754622183f96d4ff4f0d67908df2ad841affc 'Evidence[R1:H_5712c3e12f49]: status=COUNTERMODEL_FOUND, model=Mathematical model for Moon.madeOfCheese is asserted as true: validated against retrieved context 0 items.'
+ doc cbe45f32f768866084807f96bc9e5c56537cb000697a16e0705dc35420b340f1 'Evidence[R1:H_2b4a6b8c488a]: status=TESTED, model=Mathematical model for Unitary gates preserve inner products: validated against retrieved context 0 items.'

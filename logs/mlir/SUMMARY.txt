@@ -1,0 +1,11 @@
+== mlir  (2026-11-23 18:57:42 PST)
+PASS main/hilbert11.mlir vs Python PIRTM (expected/hilbert11.txt): identical (21 lines)
+PASS main/quantum.mlir vs Python PIRTM (expected/quantum.txt): identical (19 lines)
+PASS main/oracle.mlir vs Python PIRTM (expected/oracle.txt): identical (17 lines)
+PASS main/engine.mlir vs Python PIRTM (expected/engine.subseq.txt): all 18 reference lines present in order
+PASS main/agents.mlir vs Python PIRTM (expected/agents.txt): identical (25 lines)
+PASS main/hcalc.mlir vs J (logs/j/demo.out, hcalc section): identical (18 lines)
+PASS main/goldilocks.mlir vs J (logs/j/demo.out, goldilocks section): identical (13 lines)
+PASS custom/hcalc_pipeline.mlir (IRDL-verified hcalc, lowered to func.call) vs J (logs/j/demo.out): all 11 lines found in the reference
+PASS custom/pirtm_roundtrip.mlir (IRDL-verified pirtm, lowered to func.call) vs Python PIRTM (expected/hilbert11.txt + oracle.txt): all 4 lines found in the reference
+mlir: PASS

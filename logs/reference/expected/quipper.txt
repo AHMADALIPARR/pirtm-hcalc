@@ -1,0 +1,50 @@
+== quipper: bell (tests/test_quantum.py)
+bell amp[0] = (0.70710678118654750, 0.00000000000000000)
+bell amp[3] = (0.70710678118654750, 0.00000000000000000)
+bell prob[0] = 0.50000000000000000
+bell prob[1] = 0.00000000000000000
+bell prob[2] = 0.00000000000000000
+bell prob[3] = 0.50000000000000000
+bell norm_squared = 0.99999999999999980
+== quipper: roundtrip (tests/test_hilbert11.py, basis |7>)
+roundtrip forward amp[6] = (0.49999999999999990, 0.00000000000000000)
+roundtrip forward amp[39] = (0.49999999999999990, 0.00000000000000000)
+roundtrip forward amp[1542] = (0.00000000000000000, 0.49999999999999990)
+roundtrip forward amp[1575] = (0.00000000000000000, -0.49999999999999990)
+roundtrip forward norm_squared = 0.99999999999999960
+roundtrip forward fidelity_vs_initial = 0.00000000000000000
+roundtrip fidelity (dagger list) = 0.99999999999999930
+roundtrip fidelity (Quipper reverse_generic_endo) = 0.99999999999999930
+== quipper: agent worker circuits (pirtm/agents/workers.py)
+A01 transition_fidelity[0] = 0.49999999999999990
+A01 transition_fidelity[1] = 0.12499999999999994
+A01 transition_fidelity[2] = 0.12499999999999990
+A02 norm_after_evolve = 0.99999999999999980
+A02 roundtrip_fidelity = 0.99999999999999960
+A03 support = 2048
+A03 max_err = 1.73472347597680700e-17
+A04 amp[0] = (0.70710678118654750, 0.00000000000000000)
+A04 amp[1792] = (0.70710678118654750, 0.00000000000000000)
+A04 total_prob = 0.99999999999999980
+A04 active_outcomes = 2
+A05 amp[108] = (0.70710678118654750, 0.00000000000000000)
+A05 amp[1068] = (0.70710678118654750, 0.00000000000000000)
+A05 full_recovery_fidelity = 0.99999999999999960
+A05 rho00 = 0.49999999999999990
+A08 purity = 0.49999999999999980
+== quipper: central adversarial experiment (hilbert11.run_central_adversarial_experiment)
+psi1 amp[0] = (0.70710678118654750, 0.00000000000000000)
+psi1 amp[1025] = (0.70710678118654750, 0.00000000000000000)
+psi2 amp[512] = (0.70710678118654750, 0.00000000000000000)
+psi2 amp[1537] = (0.70710678118654750, 0.00000000000000000)
+state_dimension = 2048
+psi1 norm_squared = 0.99999999999999980
+psi2 norm_squared = 0.99999999999999980
+global_overlap_fidelity = 0.00000000000000000
+global_distinguishable = True
+reduced_trace_distance = 0.00000000000000000
+subsystem_distinguishable = False
+psi1 rho_A = [[0.49999999999999990, 0.00000000000000000], [0.00000000000000000, 0.49999999999999990]] (real parts)
+psi2 rho_A = [[0.49999999999999990, 0.00000000000000000], [0.00000000000000000, 0.49999999999999990]] (real parts)
+== quipper: classical reversible baseline (ClassicalReversibleBaseline test)
+classical |101> -> amp[6] = (1.00000000000000000, 0.00000000000000000)

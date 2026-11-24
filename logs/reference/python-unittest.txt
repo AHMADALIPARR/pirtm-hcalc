@@ -1,0 +1,22 @@
+test_concurrent_scheduler_dispatch (test_agents.TestAgentsAndScheduler.test_concurrent_scheduler_dispatch) ... ok
+test_eleven_agents_instantiation_and_contract (test_agents.TestAgentsAndScheduler.test_eleven_agents_instantiation_and_contract) ... ok
+test_scientific_boundaries_registry (test_agents.TestAgentsAndScheduler.test_scientific_boundaries_registry) ... ok
+test_11qubit_reversible_roundtrip (test_hilbert11.TestHilbert11.test_11qubit_reversible_roundtrip) ... ok
+test_central_adversarial_experiment (test_hilbert11.TestHilbert11.test_central_adversarial_experiment) ... ok
+test_dimensions_and_basis_initialization (test_hilbert11.TestHilbert11.test_dimensions_and_basis_initialization) ... ok
+test_cas_put_get_immutability (test_oracle.TestCASAndOracle.test_cas_put_get_immutability) ... ok
+test_oracle_embed_deterministic_fallback (test_oracle.TestCASAndOracle.test_oracle_embed_deterministic_fallback) ... ok
+test_oracle_retrieve_and_filter (test_oracle.TestCASAndOracle.test_oracle_retrieve_and_filter) ... ok
+test_bell_state_generation (test_quantum.TestQuantumCircuit.test_bell_state_generation) ... ok
+test_classical_reversible_baseline (test_quantum.TestQuantumCircuit.test_classical_reversible_baseline) ... ok
+test_cnot_unitarity (test_quantum.TestQuantumCircuit.test_cnot_unitarity) ... ok
+test_pauli_algebra_and_tensor (test_quantum.TestQuantumCircuit.test_pauli_algebra_and_tensor) ... ok
+test_single_qubit_unitarity (test_quantum.TestQuantumCircuit.test_single_qubit_unitarity) ... ok
+test_bounded_execution_and_fuel_depletion (test_recursive_engine.TestRecursiveKnowledgeEngine.test_bounded_execution_and_fuel_depletion) ... ok
+test_contradiction_preservation_and_countermodel (test_recursive_engine.TestRecursiveKnowledgeEngine.test_contradiction_preservation_and_countermodel) ... ok
+test_deduplication (test_recursive_engine.TestRecursiveKnowledgeEngine.test_deduplication) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.031s
+
+OK

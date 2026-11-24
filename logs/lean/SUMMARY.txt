@@ -1,0 +1,5 @@
+== lean  (2026-11-23 18:58:17 PST)
+lake build -> exit 0 -> logs/lean/build.log
+occurrences of [sorry, admit] (whole words) in project .lean files: 0
+axiom audit -> exit 0, 55 axioms declared in project modules -> logs/lean/axioms.txt
+lean: PASS

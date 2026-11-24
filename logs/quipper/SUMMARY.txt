@@ -1,0 +1,4 @@
+== quipper  (2026-11-23 18:58:10 PST)
+cabal build pirtm-quipper -> exit 0
+cabal run pirtm-quipper -> exit 0, 242 lines (53 printed gate lines) -> logs/quipper/run.out
+PASS simulated values vs Python PIRTM (expected/quipper.txt): identical

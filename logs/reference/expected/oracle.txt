@@ -1,0 +1,17 @@
+== oracle: CAS + retrieval (tests/test_oracle.py)
+sha256 ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+put sha 16a3687c6001b54585927f0f99a4a3f5670de73c5fb5ae1ffa15fde697a4843f
+re-put same sha (immutability) 16a3687c6001b54585927f0f99a4a3f5670de73c5fb5ae1ffa15fde697a4843f
+get roundtrip equal True
+provenance creator==A01 True
+verify integrity_valid True
+embed: len=64 deterministic=True distinct=True
+tokens("Evidence[R1:H_x]: status=TESTED, items.") = evidence|r1:h_x|status|tested|items|
+put sha 98e775af53563b7469dd4611fc2a20d3272c062faffde1c75c2fbb3eb41a6503
+put sha e945436d6b38139939a317db35fcc39cbda38c5d3288e8cdd689db5a723f0ba2
+retrieve 'unitary transformation' -> 98e775af53563b7469dd4611fc2a20d3272c062faffde1c75c2fbb3eb41a6503 score 0.4 bits 4600877379321698714
+retrieve 'unitary transformation' -> e945436d6b38139939a317db35fcc39cbda38c5d3288e8cdd689db5a723f0ba2 score 0.0 bits 0
+retrieve 'transformation' filter domain=causality -> e945436d6b38139939a317db35fcc39cbda38c5d3288e8cdd689db5a723f0ba2 score 0.0 bits 0
+retrieve 'quantum unitarity' -> 98e775af53563b7469dd4611fc2a20d3272c062faffde1c75c2fbb3eb41a6503 score 0.0 bits 0
+retrieve 'quantum unitarity' -> e945436d6b38139939a317db35fcc39cbda38c5d3288e8cdd689db5a723f0ba2 score 0.0 bits 0

@@ -1,0 +1,21 @@
+== hilbert11: central adversarial experiment (11 qubits, 2048 amplitudes)
+state_dimension = 2048
+psi1_norm_squared = 0.99999999999999978 (bits 4607182418800017406)
+psi2_norm_squared = 0.99999999999999978 (bits 4607182418800017406)
+global_overlap_fidelity = 0 (bits 0)
+global_distinguishable = 1
+reduced_trace_distance = 0 (bits 0)
+subsystem_distinguishable = 0
+psi1_p0 = 0.49999999999999989 (bits 4602678819172646910)
+psi1_p1 = 0.49999999999999989 (bits 4602678819172646910)
+psi2_p0 = 0.49999999999999989 (bits 4602678819172646910)
+psi2_p1 = 0.49999999999999989 (bits 4602678819172646910)
+psi1_rho01_re = 0 (bits 0)
+== hilbert11: test_11qubit_reversible_roundtrip (basis 7)
+forward_amplitude[6] = (0.49999999999999989, 0) bits (4602678819172646910, 0)
+forward_amplitude[39] = (0.49999999999999989, 0) bits (4602678819172646910, 0)
+forward_amplitude[1542] = (0, 0.49999999999999989) bits (0, 4602678819172646910)
+forward_amplitude[1575] = (0, -0.49999999999999989) bits (0, -4620693217682128898)
+forward_norm_squared = 0.99999999999999956 (bits 4607182418800017404)
+forward_fidelity_vs_initial = 0 (bits 0)
+roundtrip_fidelity = 0.99999999999999933 (bits 4607182418800017402)

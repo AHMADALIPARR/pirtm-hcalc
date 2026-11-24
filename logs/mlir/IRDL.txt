@@ -1,0 +1,9 @@
+== irdl  (2026-11-23 18:57:45 PST)
+PASS parse mlir/dialects/pirtm.irdl.mlir
+PASS parse mlir/dialects/hcalc.irdl.mlir
+PASS custom/hcalc_pipeline.mlir: verifies with --irdl-file=hcalc (exit 0); rejected without it (exit 1)
+PASS custom/pirtm_roundtrip.mlir: verifies with --irdl-file=pirtm (exit 0); rejected without it (exit 1)
+PASS mlir/custom/invalid/hcalc_bad_operand_type.mlir rejected (exit 1): mlir/custom/invalid/hcalc_bad_operand_type.mlir:6:8: error: expected 'i64' but got 'f64'
+PASS mlir/custom/invalid/hcalc_bad_result_count.mlir rejected (exit 1): mlir/custom/invalid/hcalc_bad_result_count.mlir:6:8: error: op expects exactly 4 results, but got 1
+PASS mlir/custom/invalid/pirtm_bad_operand_count.mlir rejected (exit 1): mlir/custom/invalid/pirtm_bad_operand_count.mlir:6:8: error: op expects exactly 4 operands, but got 3
+irdl: PASS

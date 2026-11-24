@@ -1,0 +1,242 @@
+== quipper: bell (tests/test_quantum.py)
+-- circuit bell (ASCII)
+Inputs: 0:Qbit, 1:Qbit
+QGate["H"](0)
+QGate["not"](1) with controls=[+0]
+Outputs: 0:Qbit, 1:Qbit
+
+-- circuit bell (GateCount)
+    1: "H, arity 1"
+    1: "not, arity 1", controls 1
+Total gates: 2
+Inputs: 2
+Outputs: 2
+Qubits in circuit: 2
+bell amp[0] = (0.70710678118654750, 0.00000000000000000)
+bell amp[3] = (0.70710678118654750, 0.00000000000000000)
+bell prob[0] = 0.50000000000000000
+bell prob[1] = 0.00000000000000000
+bell prob[2] = 0.00000000000000000
+bell prob[3] = 0.50000000000000000
+bell norm_squared = 0.99999999999999980
+== quipper: roundtrip (tests/test_hilbert11.py, basis |7>)
+-- circuit roundtrip (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["H"](0)
+QGate["not"](1) with controls=[+0]
+QGate["S"](1)
+QGate["not"](5) with controls=[+1]
+QGate["H"](5)
+QGate["not"](10) with controls=[+5]
+QGate["not"](10)
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit roundtrip (GateCount)
+    2: "H, arity 1"
+    1: "S, arity 1"
+    1: "not, arity 1"
+    3: "not, arity 1", controls 1
+Total gates: 7
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+roundtrip forward amp[6] = (0.49999999999999990, 0.00000000000000000)
+roundtrip forward amp[39] = (0.49999999999999990, 0.00000000000000000)
+roundtrip forward amp[1542] = (0.00000000000000000, 0.49999999999999990)
+roundtrip forward amp[1575] = (0.00000000000000000, -0.49999999999999990)
+roundtrip forward norm_squared = 0.99999999999999960
+roundtrip forward fidelity_vs_initial = 0.00000000000000000
+roundtrip fidelity (dagger list) = 0.99999999999999930
+roundtrip fidelity (Quipper reverse_generic_endo) = 0.99999999999999930
+-- circuit roundtrip_inverse_by_reverse_generic_endo (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["not"](10)
+QGate["not"](10) with controls=[+5]
+QGate["H"](5)
+QGate["not"](5) with controls=[+1]
+QGate["S"]*(1)
+QGate["not"](1) with controls=[+0]
+QGate["H"](0)
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit roundtrip_inverse_by_reverse_generic_endo (GateCount)
+    2: "H, arity 1"
+    1: "S*, arity 1"
+    1: "not, arity 1"
+    3: "not, arity 1", controls 1
+Total gates: 7
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+== quipper: agent worker circuits (pirtm/agents/workers.py)
+-- circuit A01 (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["H"](0)
+QGate["not"](1) with controls=[+0]
+QGate["H"](1)
+QGate["not"](2) with controls=[+1]
+QGate["H"](2)
+QGate["not"](3) with controls=[+2]
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit A01 (GateCount)
+    3: "H, arity 1"
+    3: "not, arity 1", controls 1
+Total gates: 6
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+A01 transition_fidelity[0] = 0.49999999999999990
+A01 transition_fidelity[1] = 0.12499999999999994
+A01 transition_fidelity[2] = 0.12499999999999990
+-- circuit A02 (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["H"](0)
+QGate["not"](5) with controls=[+0]
+QGate["S"](5)
+QGate["not"](10) with controls=[+5]
+QGate["not"](10)
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit A02 (GateCount)
+    1: "H, arity 1"
+    1: "S, arity 1"
+    1: "not, arity 1"
+    2: "not, arity 1", controls 1
+Total gates: 5
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+A02 norm_after_evolve = 0.99999999999999980
+A02 roundtrip_fidelity = 0.99999999999999960
+-- circuit A03 (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["H"](0)
+QGate["H"](1)
+QGate["H"](2)
+QGate["H"](3)
+QGate["H"](4)
+QGate["H"](5)
+QGate["H"](6)
+QGate["H"](7)
+QGate["H"](8)
+QGate["H"](9)
+QGate["H"](10)
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit A03 (GateCount)
+   11: "H, arity 1"
+Total gates: 11
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+A03 support = 2048
+A03 max_err = 1.73472347597680700e-17
+-- circuit A04 (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["H"](0)
+QGate["not"](1) with controls=[+0]
+QGate["not"](2) with controls=[+1]
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit A04 (GateCount)
+    1: "H, arity 1"
+    2: "not, arity 1", controls 1
+Total gates: 3
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+A04 amp[0] = (0.70710678118654750, 0.00000000000000000)
+A04 amp[1792] = (0.70710678118654750, 0.00000000000000000)
+A04 total_prob = 0.99999999999999980
+A04 active_outcomes = 2
+-- circuit A05 (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["H"](0)
+QGate["not"](4) with controls=[+0]
+QGate["not"](7)
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit A05 (GateCount)
+    1: "H, arity 1"
+    1: "not, arity 1"
+    1: "not, arity 1", controls 1
+Total gates: 3
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+A05 amp[108] = (0.70710678118654750, 0.00000000000000000)
+A05 amp[1068] = (0.70710678118654750, 0.00000000000000000)
+A05 full_recovery_fidelity = 0.99999999999999960
+A05 rho00 = 0.49999999999999990
+-- circuit A08 (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["H"](0)
+QGate["not"](10) with controls=[+0]
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit A08 (GateCount)
+    1: "H, arity 1"
+    1: "not, arity 1", controls 1
+Total gates: 2
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+A08 purity = 0.49999999999999980
+== quipper: central adversarial experiment (hilbert11.run_central_adversarial_experiment)
+-- circuit prepare_psi1 (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["H"](0)
+QGate["not"](10) with controls=[+0]
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit prepare_psi1 (GateCount)
+    1: "H, arity 1"
+    1: "not, arity 1", controls 1
+Total gates: 2
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+-- circuit prepare_psi2 (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+QGate["not"](1)
+QGate["H"](0)
+QGate["not"](10) with controls=[+0]
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit, 3:Qbit, 4:Qbit, 5:Qbit, 6:Qbit, 7:Qbit, 8:Qbit, 9:Qbit, 10:Qbit
+
+-- circuit prepare_psi2 (GateCount)
+    1: "H, arity 1"
+    1: "not, arity 1"
+    1: "not, arity 1", controls 1
+Total gates: 3
+Inputs: 11
+Outputs: 11
+Qubits in circuit: 11
+psi1 amp[0] = (0.70710678118654750, 0.00000000000000000)
+psi1 amp[1025] = (0.70710678118654750, 0.00000000000000000)
+psi2 amp[512] = (0.70710678118654750, 0.00000000000000000)
+psi2 amp[1537] = (0.70710678118654750, 0.00000000000000000)
+state_dimension = 2048
+psi1 norm_squared = 0.99999999999999980
+psi2 norm_squared = 0.99999999999999980
+global_overlap_fidelity = 0.00000000000000000
+global_distinguishable = True
+reduced_trace_distance = 0.00000000000000000
+subsystem_distinguishable = False
+psi1 rho_A = [[0.49999999999999990, 0.00000000000000000], [0.00000000000000000, 0.49999999999999990]] (real parts)
+psi2 rho_A = [[0.49999999999999990, 0.00000000000000000], [0.00000000000000000, 0.49999999999999990]] (real parts)
+== quipper: classical reversible baseline (ClassicalReversibleBaseline test)
+-- circuit classical_baseline (ASCII)
+Inputs: 0:Qbit, 1:Qbit, 2:Qbit
+QGate["not"](1)
+QGate["not"](2) with controls=[+0, +1]
+Outputs: 0:Qbit, 1:Qbit, 2:Qbit
+
+-- circuit classical_baseline (GateCount)
+    1: "not, arity 1"
+    1: "not, arity 1", controls 2
+Total gates: 2
+Inputs: 3
+Outputs: 3
+Qubits in circuit: 3
+classical |101> -> amp[6] = (1.00000000000000000, 0.00000000000000000)

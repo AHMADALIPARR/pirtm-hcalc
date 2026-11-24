@@ -1,0 +1,63 @@
+== scheduler
+A01 1 3 0 0 VERIFIED_LOCALLY b994703f65a07da6482bd77cd9b579e4ccd34a8ae4ae7eba47c086ed68681d0d
+   'Temporal State Transitions: 11-qubit DAG transitions=3, transition_fidelities=[0.4999999999999999, 0.12499999999999994, 0.1249999999999999]'
+A02 1 2 0 0 VERIFIED_LOCALLY a03f895153362c683230c073b48de99438cc6f5c9877718cf7b24f017b0c9a49
+   'Reversible 11-Qubit Evolution: norm=1.000000, roundtrip_fidelity=1.00000000'
+A03 1 1 0 0 VERIFIED_LOCALLY 78049db516abc9534e2cb348ea2df8c22eb75598ea4bc8d49598f93393e2cc60
+   '11-Coordinate Hadamard Transformation: 2048-dim uniform superposition verified=True, max_err=1.73e-17'
+A04 4 2 0 0 VERIFIED_LOCALLY c009c6bbce0cc17fa610a4534c5e92d15ae2d320adb1ea102bcbaefa12838eab
+   '11-Qubit Born Rule Probabilities: total_prob=1.00000000, active_outcomes=2'
+A05 5 2 0 0 VERIFIED_LOCALLY 87d455c3270cb370ba1394b6db4751aa4558541c05fbea5e47d37dc732644d3e
+   'Historical Encoding Experiment: full_recovery_fidelity=1.00000000, restricted_subsystem_trace_rho00=0.5000'
+A06 6 1 0 0 REJECTED_AS_PHYSICAL_PREDICTOR 8e54109f1b8a163b36048e3f8b6d65a5a96e483508f6db2a4f825c60f24772ae
+   'Quantitative Ambiguity Scoring: tokens=16, unique=15, lexical_entropy_ratio=0.9375, status=SPECULATION'
+A07 5 1 0 0 VERIFIED_LOCALLY c6f6496e5974d22a2f6f2fe40d90f2facb183626d871b264cb76d71b943eeec4
+   'Recursive Hypothesis Revision: round=1, fuel_remaining=3, converged=False'
+A08 6 1 0 0 VERIFIED_LOCALLY 6c216e6faa5ab774c5010a9274102302cae1b22a206e78010834e314eacaab88
+   'Restricted Observer Subsystem: purity=0.5000, mixed_state_loss=True'
+A09 1 2 0 0 VERIFIED_LOCALLY 9414be6eba22b5374af16086fc6622c3bd5108e6f53524e39bea0ef2aba63bd6
+   'Subsystem Entropy Bound: von_neumann_entropy=1.0000 bits, bound_capacity=1.0 bit'
+A10 2 0 0 11 NOT_RUN a26ba86e3ae62caa252121cc24ca826cb94ec5b63113bd7779a93f43f3fc4bf3
+   'Agda Invariant Verification: Status=NOT_RUN. Required command: `agda --no-libraries -i . agda/PIRTM/Invariants.agda`. Formal Invariants defined: I01 to I11 in agda/PIRTM/Invariants.agda.'
+A11 1 2 0 0 VERIFIED_LOCALLY 25e768b73f71f3d4e4e76ff39c36f127142af9b6add9451c7d81e7da98350308
+   'Central Adversarial Experiment: global_distinguishable=True, subsystem_distinguishable=False, trace_distance=0.0, passed=True'
+passed 17 failed 0 artifacts 11 ledger True
+invariants ['I01', 'I01 — State preservation', 'I02', 'I02 — Causal ordering', 'I03', 'I04', 'I05', 'I05 — Termination', 'I06', 'I06 — Quantum unitarity', 'I07', 'I07 — Probability normalization', 'I08', 'I08 — Encoding integrity', 'I09', 'I09 — Observation boundaries', 'I10', 'I11', 'I11 — Evidence classification']
+== engine
+ hypo H_6b26c4e28b47 'Causal graphs are acyclic'
+ round 1 fuel 3 eval 1 contra 0 conv True ev ['fe711472f2380660badad0293bacaf382b841cbcc3bdae0a4bd169a3d5ab5e4d']
+ status H_6b26c4e28b47 TESTED 0 0
+ doc fe711472f2380660badad0293bacaf382b841cbcc3bdae0a4bd169a3d5ab5e4d 'Evidence[R1:H_6b26c4e28b47]: status=TESTED, model=Mathematical model for Causal graphs are acyclic: validated against retrieved context 0 items.'
+ hypo H_5712c3e12f49 'Moon.madeOfCheese is asserted as true'
+ round 1 fuel 3 eval 1 contra 1 conv True ev ['030b085155bf01d98bddc29497b754622183f96d4ff4f0d67908df2ad841affc']
+ status H_5712c3e12f49 COUNTERMODEL_FOUND 1 1
+ doc 030b085155bf01d98bddc29497b754622183f96d4ff4f0d67908df2ad841affc 'Evidence[R1:H_5712c3e12f49]: status=COUNTERMODEL_FOUND, model=Mathematical model for Moon.madeOfCheese is asserted as true: validated against retrieved context 0 items.'
+ hypo H_6b26c4e28b47 'Causal graphs are acyclic'
+ hypo H_5712c3e12f49 'Moon.madeOfCheese is asserted as true'
+ hypo H_2b4a6b8c488a 'Unitary gates preserve inner products'
+ round 1 fuel 3 eval 3 contra 1 conv True ev ['fe711472f2380660badad0293bacaf382b841cbcc3bdae0a4bd169a3d5ab5e4d', '030b085155bf01d98bddc29497b754622183f96d4ff4f0d67908df2ad841affc', 'cbe45f32f768866084807f96bc9e5c56537cb000697a16e0705dc35420b340f1']
+ status H_6b26c4e28b47 TESTED 0 0
+ status H_5712c3e12f49 COUNTERMODEL_FOUND 1 1
+ status H_2b4a6b8c488a TESTED 0 0
+ doc fe711472f2380660badad0293bacaf382b841cbcc3bdae0a4bd169a3d5ab5e4d 'Evidence[R1:H_6b26c4e28b47]: status=TESTED, model=Mathematical model for Causal graphs are acyclic: validated against retrieved context 0 items.'
+ doc 030b085155bf01d98bddc29497b754622183f96d4ff4f0d67908df2ad841affc 'Evidence[R1:H_5712c3e12f49]: status=COUNTERMODEL_FOUND, model=Mathematical model for Moon.madeOfCheese is asserted as true: validated against retrieved context 0 items.'
+ doc cbe45f32f768866084807f96bc9e5c56537cb000697a16e0705dc35420b340f1 'Evidence[R1:H_2b4a6b8c488a]: status=TESTED, model=Mathematical model for Unitary gates preserve inner products: validated against retrieved context 0 items.'
+== oracle test
+ retrieve 'unitary transformation' None 98e775af53563b7469dd4611fc2a20d3272c062faffde1c75c2fbb3eb41a6503 0.4 4600877379321698714
+ retrieve 'unitary transformation' None e945436d6b38139939a317db35fcc39cbda38c5d3288e8cdd689db5a723f0ba2 0.0 0
+ retrieve 'transformation' {'domain': 'causality'} e945436d6b38139939a317db35fcc39cbda38c5d3288e8cdd689db5a723f0ba2 0.0 0
+ retrieve 'quantum unitarity' None 98e775af53563b7469dd4611fc2a20d3272c062faffde1c75c2fbb3eb41a6503 0.0 0
+ retrieve 'quantum unitarity' None e945436d6b38139939a317db35fcc39cbda38c5d3288e8cdd689db5a723f0ba2 0.0 0
+ sha test 16a3687c6001b54585927f0f99a4a3f5670de73c5fb5ae1ffa15fde697a4843f e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+== hilbert
+{"num_qubits": 11, "state_dimension": 2048, "psi1_normalized": true, "psi2_normalized": true, "global_overlap_fidelity": 0.0, "global_distinguishable": true, "reduced_trace_distance": 0.0, "subsystem_distinguishable": false, "observer_probabilities_psi1": [0.4999999999999999, 0.4999999999999999], "observer_probabilities_psi2": [0.4999999999999999, 0.4999999999999999], "conclusion": "Restricted observer cannot distinguish Psi_1 from Psi_2 locally, but global observer distinguishes with certainty."}
+global_overlap_fidelity 0
+reduced_trace_distance 0
+p [4602678819172646910, 4602678819172646910]
+roundtrip7 forward nz [(6, 0.4999999999999999, 0.0, 4602678819172646910, 0), (39, 0.4999999999999999, 0.0, 4602678819172646910, 0), (1542, 0.0, 0.4999999999999999, 0, 4602678819172646910), (1575, 0.0, -0.4999999999999999, 0, -4620693217682128898)]
+roundtrip7 fwd fid 0.0 norm 0.9999999999999996 4607182418800017404
+roundtrip7 back fid 0.9999999999999993 4607182418800017402
+== small circuit
+bell [(0.7071067811865475, 0.0, 4604544271217802188), (0.0, 0.0, 0), (0.0, 0.0, 0), (0.7071067811865475, 0.0, 4604544271217802188)] [0.5, 0.0, 0.0, 0.5]
+unitary [True, True, True, True, True, True, True, True]
+classical 111 110 6

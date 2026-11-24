@@ -1,0 +1,19 @@
+== quantum: gates.py / circuit.py tests
+is_unitary[H,X,Y,Z,S,T,CNOT,HxX] = True True True True True True True True
+hxx_rows = 4
+xx_00_re,xx_01_re,xx_10_re,xx_11_re = 1 (bits 4607182418800017408)
+xx_00_re,xx_01_re,xx_10_re,xx_11_re = 0 (bits 0)
+xx_00_re,xx_01_re,xx_10_re,xx_11_re = 0 (bits 0)
+xx_00_re,xx_01_re,xx_10_re,xx_11_re = 1 (bits 4607182418800017408)
+bell_to_unitary_is_unitary = 1
+bell_norm_squared = 0.99999999999999978 (bits 4607182418800017406)
+bell_amp0_re = 0.70710678118654746 (bits 4604544271217802188)
+bell_prob0 = 0.5 (bits 4602678819172646912)
+bell_prob1 = 0 (bits 0)
+bell_prob2 = 0 (bits 0)
+bell_prob3 = 0.5 (bits 4602678819172646912)
+bell_sample(r=0.3) = 0
+bell_sample(r=0.7) = 3
+classical_after_not1 = 7
+classical_after_toffoli012 = 6
+classical_cnot02_from_110 = 7
