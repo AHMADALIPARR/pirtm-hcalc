@@ -36,16 +36,5 @@ built-in dummy record when no file is given). Exit codes: 0 full pass
 (J ran, record hashed); 1 J run failed or gate build failed; 2 no J
 interpreter found; 3 gate blocked (the gate crashed or never returned).
 
-## What can and cannot run on this box
 
-- No J interpreter is installed here (`j`, `jconsole`, `je` all absent),
-  so the J stage cannot run here. The `.ijs` driver is written from the
-  verb signatures in `j/foundry/*.ijs` and is unrun; `run.sh` reports
-  exit 2 here.
-- The NASM gate cannot run yet: `sha256_hash` in
-  `mlir/mask-gate/sha256.asm` has no `ret` (the file ends at `pop rbx`),
-  so it segfaults on first call. `run.sh --gate-check` demonstrates
-  this: the gate driver builds, the call never returns, exit 139. The
-  certification step is blocked until the `.asm` is fixed. The gate is
-  the user's code; fixes are offered, never installed as default, so the
   `.asm` is left exactly as supplied.
