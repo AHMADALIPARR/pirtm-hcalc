@@ -12,8 +12,6 @@
 
 **Ahmad Parr · Research software · Version 0.1.0**
 
-<img src="docs/media/architecture.svg" alt="PIRTM and HCALC representation and evidence architecture" width="850" />
-
 </div>
 
 ---
