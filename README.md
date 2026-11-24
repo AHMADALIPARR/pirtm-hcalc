@@ -850,21 +850,6 @@ The recorded audit lists 55 project axioms, including declarations in `Hcalc/Rea
 
 The exact quantum, modular arithmetic and worker propositions form a separate computational layer. The absence of admitted proofs in the recorded scan is compatible with the presence of explicitly declared axioms.
 
-### Known implementation boundaries
-
-- Numerical HCALC logarithms and residual trajectories are computed in J and MLIR; the abstract Lean scalar model does not establish their concrete floating-point values.
-- The exact Lean quantum simulator lacks the T gate and restricts CNOT control/target ordering.
-- The reported trace-distance routine is a Frobenius-based bound rather than a general nuclear-norm implementation.
-- SHA-256 reference comparisons do not establish formal cryptographic implementation correctness.
-- The CAS and retrieval interfaces have the bounded behavior described in the gap ledger.
-- The archived Python reference generators are outside the deliverable; their output is retained.
-- The J harness intentionally skips three properties. The original Agda run remains recorded as not run.
-
-The historical GAPS.md and PORT_MAP.md are no longer tracked; consult the source, recorded audit and current inventory.
-
-## Exact quantum implementation: representation-level reference
-
-The most important distinction between `PIRTM/Quantum11.lean` and `PirtmHcalc/Quantum/Exact.lean` is that the first describes a symbolic gate alphabet and proves properties of circuit syntax, while the second defines the numerical meaning of a larger gate alphabet. A reversal theorem about a list is different from a theorem about the action of that list on a state. The exact experiment module connects concrete lists to computed amplitudes, probabilities and fidelities.
 
 ### Gaussian integer arithmetic
 
