@@ -29,13 +29,13 @@ Reference comparison ──→ Evidence logs
 
 ---
 
-PIRTM–HCALC is a unified research workspace for causal and reversible computation, exact finite quantum-state simulation, prime-indexed contraction dynamics, and cross-language numerical verification. It brings two source baselines into one Lake package, retaining their mathematical boundaries while introducing exact computational models and custom compiler operations.
+PIRTM–HCALC is a unified research workspace for causal and reversible computation, exact finite quantum-state simulation, prime-indexed contraction dynamics, and cross-language numerical verification. It brings two source baselines into one Lake package, retaining their mathematical boundaries while introducing exact computational models and custom compiler operations. The current workspace additionally includes the Foundry F1 J stack, a TableGen dialect, native C++ field arithmetic and NASM digest interfaces.
 
-| 461 audited theorems | 2,048 quantum amplitudes | 27 custom IR operations | 5 verification subsystems |
+| 461 audited theorems | 2,048 quantum amplitudes | 27 historical IRDL operations | 5 verification subsystems |
 |:---:|:---:|:---:|:---:|
-| 313 empty axiom sets | 11 qubits | 2 IRDL dialects | 55 declared project axioms |
+| 313 empty axiom sets | 11 qubits | 2 IRDL dialects + Foundry TableGen | 55 declared project axioms |
 
-**Source basis:** repository revision [`58f5a8a`](https://github.com/AHMADALIPARR/pirtm-hcalc/tree/58f5a8a32b0ad8eccf476dcda0b0613b6c7f827e), with committed verification logs dated November 23, 2026. Counts refer to the inspected source or recorded audit, not a newly performed build.
+**Historical verification baseline:** repository revision [`58f5a8a`](https://github.com/AHMADALIPARR/pirtm-hcalc/tree/58f5a8a32b0ad8eccf476dcda0b0613b6c7f827e), with committed verification logs dated November 23, 2026. Counts refer to the historical source or recorded audit, not a newly performed build. Current source inventory: Git tree `f3e8c5a196f7ca8674bfda5a0fcb5a868fcf234f` (November 24, 2026). The 46 new Foundry operations are documented separately.
 
 ## Contents
 
@@ -70,8 +70,10 @@ PIRTM–HCALC is a unified research workspace for causal and reversible computat
 24. [Verification driver: exact acceptance semantics](#verification-driver-exact-acceptance-semantics)
 25. [Axiom audit: quantitative and qualitative interpretation](#axiom-audit-quantitative-and-qualitative-interpretation)
 26. [Assurance matrix: established scope and stronger research obligations](#assurance-matrix-established-scope-and-stronger-research-obligations)
-27. [Figure provenance](#figure-provenance)
-28. [Provenance and licensing](#provenance-and-licensing)
+27. [Foundry F1: J, TableGen and native kernels](#foundry-f1-j-tablegen-and-native-kernels)
+28. [Current tracked file inventory](#current-tracked-file-inventory)
+29. [Figure provenance](#figure-provenance)
+30. [Provenance and licensing](#provenance-and-licensing)
 
 ## Overview
 
@@ -168,15 +170,32 @@ pirtm-hcalc/
 │       ├── Experiments.lean   Quantum experiment propositions
 │       ├── Goldilocks.lean    Modular arithmetic propositions
 │       └── Agents.lean        Worker report propositions
-├── j/                         J numerical implementation
+├── j/                         HCALC and Foundry F1 J implementations
+│   ├── foundry.ijs            Foundry package loader
+│   ├── foundry_harness.ijs    Foundry record driver
+│   ├── types.ijs              Constants and tier definitions
+│   ├── pmat.ijs               Prime monomial matrices
+│   ├── recurrence.ijs         Additive contraction recurrence
+│   ├── gate.ijs               Emission and CSL
+│   └── certify.ijs            Ace certification
 ├── mlir/
-│   ├── dialects/              IRDL operation definitions
+│   ├── dialects/              IRDL and Foundry TableGen definitions
+│   │   ├── FoundryDialect.td
+│   │   └── goldilocks_add_mul_mlir
 │   ├── lib/                   Computational kernels
 │   ├── main/                  Numerical programs
 │   └── custom/                Dialect examples and negative tests
+│       └── Goldilocks/        Native C++ field and NASM mask gate
+│           ├── goldilocks.cpp
+│           ├── goldilocks.h
+│           ├── test_goldilocks.cpp
+│           └── mask_gate/     SHA-256, adapters, drivers and lowering map
 ├── quipper/                   Haskell circuit implementation
 ├── spec/PRODUCTION.md         Canonical HCALC mathematics
-├── tools/AxiomAudit.lean      Axiom inspection
+├── tools/                     Audit and Foundry orchestration
+│   ├── AxiomAudit.lean
+│   ├── run.sh
+│   └── script_instructions.md
 ├── verify/                    J property harness
 ├── logs/                      Recorded and reference output
 ├── PIRTM.lean                 PIRTM import root
@@ -185,8 +204,6 @@ pirtm-hcalc/
 ├── lakefile.lean              Build and comparison driver
 ├── lake-manifest.json         Dependency manifest
 ├── lean-toolchain             Pinned compiler
-├── GAPS.md                    Assumptions and behavioral differences
-├── PORT_MAP.md                Source migration ledger
 └── LICENSE
 ```
 
@@ -394,7 +411,7 @@ The supports are disjoint; the global inner product is zero. Tracing out qubits 
 | Seven-gate roundtrip | `roundtrip7_forward`, `roundtrip7_back` |
 | Classical baseline | `classical_baseline`: Boolean NOT and Toffoli example |
 
-The exact simulator has a narrower gate domain than the MLIR implementation. See [GAPS.md](GAPS.md) for the CNOT orientation restriction and T-gate distinction.
+The exact simulator has a narrower gate domain than the MLIR implementation. See the exact gate action and trust boundaries sections below for the CNOT orientation restriction and T-gate distinction.
 
 ## HCALC: nested contraction dynamics
 
@@ -714,7 +731,7 @@ The MLIR oracle subsystem includes content-addressed storage, retrieval and dige
 
 ## Formal model ports
 
-The combined Lean import root incorporates Agda-derived and Alloy-derived models. The source paths are mapped in [PORT_MAP.md](PORT_MAP.md).
+The combined Lean import root incorporates Agda-derived and Alloy-derived models. The current source paths are listed in the tracked file inventory; the historical port ledger is no longer tracked.
 
 | Module | Migration target |
 |---|---|
@@ -831,7 +848,7 @@ Driver verdict ──→ Build and audit logs
 
 ### HCALC scalar assumptions
 
-The recorded audit lists 55 project axioms, including declarations in `Hcalc/RealStub.lean`, `Hcalc/Carrier.lean` and `Hcalc/Foundry.lean`. These include the abstract scalar type and operations, scalar and order laws, norms, Foundry state operations, finite maximum properties, and soft-scaling parameters. In particular, `real_contract_force_zero` is a declared assumption used by the fixed-point uniqueness argument. The complete inventory is in [GAPS.md](GAPS.md).
+The recorded audit lists 55 project axioms, including declarations in `Hcalc/RealStub.lean`, `Hcalc/Carrier.lean` and `Hcalc/Foundry.lean`. These include the abstract scalar type and operations, scalar and order laws, norms, Foundry state operations, finite maximum properties, and soft-scaling parameters. In particular, `real_contract_force_zero` is a declared assumption used by the fixed-point uniqueness argument. The recorded inventory is in [`logs/lean/axioms.txt`](logs/lean/axioms.txt).
 
 The exact quantum, modular arithmetic and worker propositions form a separate computational layer. The absence of admitted proofs in the recorded scan is compatible with the presence of explicitly declared axioms.
 
@@ -845,7 +862,7 @@ The exact quantum, modular arithmetic and worker propositions form a separate co
 - The archived Python reference generators are outside the deliverable; their output is retained.
 - The J harness intentionally skips three properties. The original Agda run remains recorded as not run.
 
-For the complete project-specific limits, consult [GAPS.md](GAPS.md). For source-to-source migration details, consult [PORT_MAP.md](PORT_MAP.md).
+The historical GAPS.md and PORT_MAP.md are no longer tracked; consult the source, recorded audit and current inventory.
 
 ## Exact quantum implementation: representation-level reference
 
@@ -1644,7 +1661,7 @@ Source: [`mlir/lib/io.mlir`](mlir/lib/io.mlir).
 | `s_repr` | Reference-compatible float representation |
 | `s_jfloat` | J-compatible float display |
 
-`GAPS.md` restricts the formatting guarantees to the magnitudes and precision conditions used by the programs. The bitwise output comparisons are useful precisely because decimal text can conceal last-bit differences. They do not prove a general-purpose correctly rounded formatter.
+The historical documentation restricted the formatting guarantees to the magnitudes and precision conditions used by the programs. The bitwise output comparisons are useful precisely because decimal text can conceal last-bit differences. They do not prove a general-purpose correctly rounded formatter.
 
 ### IRDL operation contract: example from the source
 
@@ -2216,6 +2233,357 @@ This section is an engineering interpretation of the inspected source and record
 
 The stronger obligations are presented as research directions rather than empty implementation slots. They preserve the existing mathematics and make the next proof boundary explicit.
 
+## Foundry F1: J, TableGen and native kernels
+
+The current workspace extends the original PIRTM–HCALC libraries with Foundry F1: prime-field arithmetic, signed monomial matrices, spectral analysis, additive recurrence, emission policies, numerical certification, and native SHA-256 interfaces. The original nested HCALC model remains distinct from the additive Foundry recurrence.
+
+```text
+                    PIRTM × HCALC × Foundry F1
+                               |
+          +--------------------+----------------------+
+          |                    |                      |
+       Lean 4              Pure J                 MLIR
+          |                    |                      |
+   causal semantics        types.ijs          IRDL + TableGen
+   quantum algebra             |                      |
+   field evidence          Goldilocks           foundry dialect
+                               |                      |
+                              PMat              generic IR example
+                               |
+                           spectral            Native C++ field
+                               |                      |
+                          recurrence            wide integer oracle
+                               |
+                          emission gate
+                               |
+                          Ace certificate
+                               |
+                          harness record
+                               |
+                       C driver / NASM adapter
+                               |
+                           SHA-256 digest
+```
+
+This diagram describes the source interfaces and intended data flow, not a newly verified integrated build.
+
+### Pure-J package and module reference
+
+| Module | Responsibility | Representative interface |
+|---|---|---|
+| [foundry.ijs](j/foundry.ijs) | Seven-module package loader | `foundry_export` |
+| [types.ijs](j/types.ijs) | Prime constants, tiers, policies and verdicts | `tier_eps`, `tier_epsilon` |
+| [goldilocks.ijs](j/goldilocks.ijs) | Field operations and batches | `fp_reduce`, `fp_mulmod`, `fp_inv` |
+| [pmat.ijs](j/pmat.ijs) | Signed sparse monomial matrices | `pmat_new`, `pmat_insert`, `pmat_compose` |
+| [spectral.ijs](j/spectral.ijs) | Gershgorin and power iteration | `spectral_analyze`, `sr_radius` |
+| [recurrence.ijs](j/recurrence.ijs) | Schedules, projection and iteration | `synth_weights`, `rec_step`, `rec_run` |
+| [gate.ijs](j/gate.ijs) | Output and numerical CSL checks | `emit_apply`, `csl_commutation` |
+| [certify.ijs](j/certify.ijs) | Margin, tail estimate and certificate | `ace_certify` |
+| [foundry_harness.ijs](j/foundry_harness.ijs) | Named checks and serialized record | `check`, `RECORD`, `OKS` |
+| [cite.ijs](j/cite.ijs) | Separate HCALC numeric hooks | `P64`, `gershgorin_bound` |
+
+The Foundry loader orders its dependencies as types → Goldilocks → PMat → spectral → recurrence → gate → certify. The `cite` locale supplies the original HCALC numerical helper interface separately.
+
+### Additive contraction dynamics
+
+```text
+x(t+1) = Ξ(t)x(t) + Λ(t)T(x(t)) + g(t)
+q_est  = max|Ξ| + max|Λ| × r
+r      = max|T(x)| / max|x|   if max|x| > 10⁻¹⁵
+       = max|T(x)|            otherwise
+
+target = 1 − ε
+scale  = target / q_est       if q_est > target
+       = 1                    otherwise
+```
+
+The implementation accepts transform and projection hooks. `synth_weights` assigns 0.7 and 0.3 portions of the target to the two schedules, with uniform, harmonic or logarithmic decay. `soft_project` scales both weight vectors when the estimated contraction exceeds the target. `residual_l2` measures the Euclidean distance between successive states. The pointwise norm ratio is not automatically a global Lipschitz bound, and projection to the target does not establish strict inequality at that boundary.
+
+| Tier | Epsilon | Target |
+|---|---:|---:|
+| T1 | 0.10 | 0.90 |
+| T2 | 0.05 | 0.95 |
+| T3 | 0.02 | 0.98 |
+| T4 | 0.01 | 0.99 |
+
+### Record representation
+
+| Record | Ordered fields |
+|---|---|
+| PMat | rows; cols; entries (sign, delta_source, delta_target, row, col) |
+| SpectralResult | spectral_radius; contractive; gershgorin_bound; power_iter_bound; used_power_iteration |
+| StepInfo | step; q; epsilon; n_xi; n_lam; projected; residual |
+| REC_STATE | x_current; converged; history |
+| AceCert | lipschitz_upper; safety_margin; tail_bound; certified |
+
+PMat insertion checks bounds and sign. The grading interface is documented in the TableGen source as always true; this is distinct from a general proof of grading conservation. The spectral interface supplies a Gershgorin bound and a power-iteration estimate, which should not be treated as interchangeable certified upper bounds for arbitrary matrices.
+
+### Emission policies and CSL
+
+| Policy | Output |
+|---|---|
+| PassThrough | Proposed output |
+| Suppress | Zero vector when q ≥ 1 − ε; proposed output otherwise |
+| Hold | Previous output when q ≥ 1 − ε; proposed output otherwise |
+| Attenuate | Proposed output multiplied by max(0, 1 − ε − q) |
+
+Neutrality compares pairwise coordinate differences; beneficence compares L2 norms and residual; commutation compares the two hook compositions componentwise. These are finite numerical predicates on the supplied inputs.
+
+```text
+neutrality:  |T(x)i − T(x)j| / |xi − xj| ≤ 1 + ε
+             for coordinate differences above the guard
+beneficence: ‖T(x)‖₂ ≤ (1 + ε)‖x‖₂
+             residual ≤ (1 + ε)‖x‖₂
+commutation: ‖F(T(x)) − T(F(x))‖∞ ≤ ε
+```
+
+The beneficence transform-norm test includes a small-norm guard in the implementation. The residual test is separate.
+
+### Ace certificate arithmetic
+
+```text
+q_max = max of recorded q values
+r_max = max of recorded residuals
+M     = (1 − ε) − q_max
+B     = r_max / (1 − q_max)    if q_max < 1
+      = infinity              otherwise
+certified = (M ≥ delta)
+```
+
+The code uses epsilon from the first step and returns an uncertified zero record for empty history. The certificate is derived from the supplied finite history. A SHA-256 digest binds a byte representation of that record; it does not prove the mathematical predicates recorded within it.
+
+### Foundry TableGen dialect
+
+[FoundryDialect.td](mlir/dialects/FoundryDialect.td) declares 46 operations and five named types, in addition to the historical 27 operations in the two IRDL dialects. Its generic assembly syntax expresses typed operations without claiming a completed native lowering pipeline.
+
+| Type | Representation contract |
+|---|---|
+| `!foundry.fp` | Canonical Goldilocks residue, runtime range invariant |
+| `!foundry.pmat` | Prime monomial matrix |
+| `!foundry.spectral_result` | Spectral analysis record |
+| `!foundry.step_info` | Recurrence step record |
+| `!foundry.ace_cert` | Numerical certificate record |
+
+| Family | Count | Mnemonics in the `foundry` namespace |
+|---|---:|---|
+| Field | 9 | `fp_reduce`, `fp_mulmod`, `fp_add`, `fp_sub`, `fp_mul`, `fp_pow`, `fp_inv`, `fp_add_batch`, `fp_mul_batch` |
+| Tier | 1 | `tier_eps` |
+| PMat | 10 | `pmat_new`, `pmat_rows`, `pmat_cols`, `pmat_entries`, `pmat_shape`, `pmat_insert`, `pmat_validate_grading`, `pmat_conservation`, `pmat_compose`, `pmat_frobenius` |
+| Spectral | 10 | `gershgorin_bound`, `gershgorin_check`, `power_iteration`, `power_iteration_check`, `spectral_analyze`, `sr_radius`, `sr_contractive`, `sr_gersh`, `sr_power`, `sr_used_pi` |
+| Recurrence | 8 | `apply_hook`, `synth_weights`, `soft_project`, `q_estimate`, `residual_l2`, `wt_at`, `rec_step`, `rec_run` |
+| Emission / CSL | 4 | `emit_apply`, `csl_neutrality`, `csl_beneficence`, `csl_commutation` |
+| Certification | 3 | `ace_safety_margin`, `ace_tail_bound`, `ace_certify` |
+| Digest | 1 | `sha256_mask` |
+| **Total** | **46** | |
+
+The tracked example is [goldilocks_add_mul_mlir](mlir/dialects/goldilocks_add_mul_mlir), without a `.mlir` suffix in the current tree. Its field function is represented as follows:
+
+```mlir
+func.func @goldilocks_add_mul(%a: !foundry.fp, %b: !foundry.fp, %c: !foundry.fp) -> !foundry.fp {
+  %s = "foundry.fp_add"(%a, %b) : (!foundry.fp, !foundry.fp) -> !foundry.fp
+  %m = "foundry.fp_mul"(%s, %c) : (!foundry.fp, !foundry.fp) -> !foundry.fp
+  %r = "foundry.fp_reduce"(%m) : (!foundry.fp) -> !foundry.fp
+  func.return %r : !foundry.fp
+}
+```
+
+The same file contains a `certify_record` function mapping a dynamic byte tensor to a 32-byte digest using `foundry.sha256_mask`. The [lowering reference](mlir/custom/Goldilocks/mask_gate/Lowering.md) describes the verb-to-operation correspondence and the cases where no separate dialect operation exists. The new TableGen and example sources explicitly distinguish their structural inspection from compilation with MLIR tools.
+
+### Native C++ Goldilocks arithmetic
+
+| Source | Responsibility |
+|---|---|
+| [goldilocks.h](mlir/custom/Goldilocks/goldilocks.h) | `pmc::Goldilocks` and 64-bit `Elem` interface |
+| [goldilocks.cpp](mlir/custom/Goldilocks/goldilocks.cpp) | Reduction, add, sub, mul, pow, inv, batches and feature queries |
+| [test_goldilocks.cpp](mlir/custom/Goldilocks/test_goldilocks.cpp) | Independent wide-integer remainder oracle, deterministic test values |
+
+```text
+p = 2⁶⁴ − 2³² + 1 = 18446744069414584321
+ab = lo + 2⁶⁴ hi
+hi = hi_lo + 2³² hi_hi
+2⁶⁴ ≡ 2³² − 1 (mod p)
+2⁹⁶ ≡ −1 (mod p)
+ab ≡ lo + (2³² − 1)hi_lo − hi_hi (mod p)
+```
+
+The implementation uses a 128-bit product and folds the high limb using this identity. The test oracle independently computes the remainder in wide integer arithmetic. The harness includes 12 fixed values, all ordered pairs for addition, subtraction and multiplication, 64 seeded pseudorandom pairs (seed 11), inversion checks, power identities and batch comparisons. SSE2 and AVX2 queries report compilation features; the batch routines are scalar loops. The presence of test source is not a passing native test verdict or proof of constant-time behavior.
+
+### Native mask gate and SHA-256 interfaces
+
+| File | Responsibility |
+|---|---|
+| [sha256.asm](mlir/custom/Goldilocks/mask_gate/sha256.asm) | Native SHA-256 routine and state |
+| [cell_gate.asm](mlir/custom/Goldilocks/mask_gate/cell_gate.asm) | `hash_via_gate` adapter |
+| [wrapper.asm](mlir/custom/Goldilocks/mask_gate/wrapper.asm) | `sha256_hash_linux` adapter |
+| [hash_file.c](mlir/custom/Goldilocks/mask_gate/hash_file.c) | File-to-digest driver |
+| [main.c](mlir/custom/Goldilocks/mask_gate/main.c) | Reference-vector driver |
+
+```text
+System V arguments            Windows x64 arguments
+RDI = data                 →  RCX = data
+RSI = length               →  RDX = length
+RDX = output               →  R8  = output
+```
+
+| Input | Bytes | Expected SHA-256 |
+|---|---:|---|
+| Empty | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| abc | 3 | `ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad` |
+| Standard long56 vector | 56 | `248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1` |
+
+These are expected outputs from the C test driver, not new observed outputs. The native SHA-256 file is separate from the earlier `mlir/lib/sha256.mlir` implementation and its archived evidence.
+
+### Harness relocation and source-level integration boundaries
+
+| Historical path in source or comments | Current tracked path |
+|---|---|
+| `j/foundry/foundry.ijs` | [j/foundry.ijs](j/foundry.ijs) |
+| `j/foundry/*.ijs` | [j/](j/) |
+| `mlir/dialect/FoundryDialect.td` | [mlir/dialects/FoundryDialect.td](mlir/dialects/FoundryDialect.td) |
+| `mlir/lowering/LOWERING.md` | [mlir/custom/Goldilocks/mask_gate/Lowering.md](mlir/custom/Goldilocks/mask_gate/Lowering.md) |
+| `mlir/mask-gate/sha256.asm` | [mlir/custom/Goldilocks/mask_gate/sha256.asm](mlir/custom/Goldilocks/mask_gate/sha256.asm) |
+| `mlir/harness/run.sh` | [tools/run.sh](tools/run.sh) |
+| `mlir/harness/foundry_harness.ijs` | [j/foundry_harness.ijs](j/foundry_harness.ijs) |
+| `mask_gate/call_gate.asm` | [mlir/custom/Goldilocks/mask_gate/cell_gate.asm](mlir/custom/Goldilocks/mask_gate/cell_gate.asm) |
+
+The shell script still computes its root two levels above its directory and refers to the old harness layout. The J harness still loads the old nested Foundry path. The shell and J source therefore require path reconciliation before the relocated harness can be reproduced using its documented command. The native assembly source ends at the register-restoration sequence without a return instruction; the existing driver also identifies this boundary. This README documents the source without changing it.
+
+| Historical driver exit code | Meaning |
+|---|---|
+| 0 | J stage and digest stage passed |
+| 1 | J stage or gate build failure |
+| 2 | J interpreter not found |
+| 3 | Native gate blocked |
+
+See [tools/script_instructions.md](tools/script_instructions.md) for the original driver contract. Archived Lean, J, MLIR and Quipper logs retain their original evidence scope and do not attest to the new native or Foundry harness.
+
+## Current tracked file inventory
+
+The 120 tracked files in the inspected Git tree are listed below. Directories are implicit in their paths.
+
+```text
+.github/workflows/ci.yml
+.gitignore
+Hcalc.lean
+Hcalc/Axioms.lean
+Hcalc/Carrier.lean
+Hcalc/Convergence.lean
+Hcalc/Foundry.lean
+Hcalc/Invariants.lean
+Hcalc/Pipeline.lean
+Hcalc/Production.lean
+Hcalc/RealStub.lean
+LICENSE
+PIRTM.lean
+PIRTM/Core.lean
+PIRTM/Invariants.lean
+PIRTM/Quantum11.lean
+PirtmHcalc.lean
+PirtmHcalc/Agda/Assumptions.lean
+PirtmHcalc/Agda/Core.lean
+PirtmHcalc/Agda/Invariants.lean
+PirtmHcalc/Alloy/Hcalc.lean
+PirtmHcalc/Alloy/HcalcMirror.lean
+PirtmHcalc/Alloy/VacuityDemo.lean
+PirtmHcalc/Data/Agents.lean
+PirtmHcalc/Data/Experiments.lean
+PirtmHcalc/Data/Goldilocks.lean
+PirtmHcalc/Quantum/Exact.lean
+README.md
+j/certify.ijs
+j/cite.ijs
+j/demo.ijs
+j/foundry.ijs
+j/foundry_harness.ijs
+j/gate.ijs
+j/goldilocks.ijs
+j/hcalc.ijs
+j/pmat.ijs
+j/recurrence.ijs
+j/spec.md
+j/spectral.ijs
+j/types.ijs
+lake-manifest.json
+lakefile.lean
+lean-toolchain
+logs/SUMMARY.txt
+logs/j/SUMMARY.txt
+logs/j/demo.out
+logs/j/verify.out
+logs/lean/SUMMARY.txt
+logs/lean/axioms.txt
+logs/lean/build-clean.log
+logs/lean/build.log
+logs/mlir/IRDL.txt
+logs/mlir/SUMMARY.txt
+logs/mlir/agents.out
+logs/mlir/engine.out
+logs/mlir/goldilocks.out
+logs/mlir/hcalc.out
+logs/mlir/hcalc_pipeline.out
+logs/mlir/hilbert11.out
+logs/mlir/oracle.out
+logs/mlir/pirtm_roundtrip.out
+logs/mlir/quantum.out
+logs/quipper/SUMMARY.txt
+logs/quipper/run.out
+logs/reference/expected/agents.txt
+logs/reference/expected/engine.subseq.txt
+logs/reference/expected/hilbert11.txt
+logs/reference/expected/oracle.txt
+logs/reference/expected/quantum.txt
+logs/reference/expected/quipper.txt
+logs/reference/python-experiment.txt
+logs/reference/python-ref-dump.txt
+logs/reference/python-unittest.txt
+mlir/custom/Goldilocks/goldilocks.cpp
+mlir/custom/Goldilocks/goldilocks.h
+mlir/custom/Goldilocks/mask_gate/Lowering.md
+mlir/custom/Goldilocks/mask_gate/cell_gate.asm
+mlir/custom/Goldilocks/mask_gate/hash_file.c
+mlir/custom/Goldilocks/mask_gate/main.c
+mlir/custom/Goldilocks/mask_gate/sha256.asm
+mlir/custom/Goldilocks/mask_gate/wrapper.asm
+mlir/custom/Goldilocks/test_goldilocks.cpp
+mlir/custom/hcalc_pipeline.mlir
+mlir/custom/invalid/hcalc_bad_operand_type.mlir
+mlir/custom/invalid/hcalc_bad_result_count.mlir
+mlir/custom/invalid/pirtm_bad_operand_count.mlir
+mlir/custom/pirtm_roundtrip.mlir
+mlir/dialects/FoundryDialect.td
+mlir/dialects/goldilocks_add_mul_mlir
+mlir/dialects/hcalc.irdl.mlir
+mlir/dialects/pirtm.irdl.mlir
+mlir/lib/goldilocks.mlir
+mlir/lib/hcalc.mlir
+mlir/lib/io.mlir
+mlir/lib/jfmt.mlir
+mlir/lib/oracle.mlir
+mlir/lib/qmat.mlir
+mlir/lib/qsim.mlir
+mlir/lib/sha256.mlir
+mlir/main/agents.mlir
+mlir/main/engine.mlir
+mlir/main/goldilocks.mlir
+mlir/main/hcalc.mlir
+mlir/main/hilbert11.mlir
+mlir/main/oracle.mlir
+mlir/main/quantum.mlir
+quipper/cabal.project
+quipper/pirtm-quipper.cabal
+quipper/src/Analysis.hs
+quipper/src/Main.hs
+quipper/src/PirtmCircuits.hs
+spec/PRODUCTION.md
+tools/AxiomAudit.lean
+tools/run.sh
+tools/script_instructions.md
+verify/core_load.ijs
+verify/harness.ijs
+verify/run.ijs
+verify/tests/props.ijs
+```
+
 ## Figure provenance
 
 
@@ -2236,7 +2604,7 @@ All diagrams are embedded in this Markdown document using Mermaid or plain text.
 
 ## Provenance and licensing
 
-The port ledger identifies PIRTM revision `e9caa0d` and HCALC revision `4854e7b` as the source baselines. It records which components were retained, translated, rewritten or omitted. The unified package retains the Lean libraries and provides new exact data propositions, dialect definitions, backend programs and Lake-based orchestration.
+The historical port ledger identified PIRTM revision `e9caa0d` and HCALC revision `4854e7b` as the source baselines. It records which components were retained, translated, rewritten or omitted. The unified package retains the Lean libraries and provides new exact data propositions, dialect definitions, backend programs and Lake-based orchestration.
 
 The repository includes an [AGPL-3.0 license](LICENSE). Source headers additionally reference `LicenseRef-SnapKitty-Opaque-1.0`; consult the applicable license terms before relying on that alternative. The present source inspection did not establish the full text of that alternative license.
 
@@ -2245,4 +2613,3 @@ Copyright (C) 2026 Ahmad Parr.
 ---
 
 **PIRTM × HCALC — mathematical structure, computational representation, and explicit evidence boundaries.**
-
