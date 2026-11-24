@@ -10,7 +10,7 @@
 [![Quipper](https://img.shields.io/badge/Quipper-quantum%20circuits-006666)](quipper/)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-blue)](LICENSE)
 
-**Ahmad Parr · Research software · Version 0.1.0**
+**Ahmad Parr · Version 0.1.0**
 
 </div>
 
