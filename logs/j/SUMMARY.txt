@@ -1,5 +1,5 @@
-== j  (2026-11-23 18:57:42 PST)
-jconsole: /home/box/j/j9.7/bin/jconsole
+== j  (2026-11-25 15:56:52 UTC)
+jconsole: /home/hatch/workspace/.tools/j/j9.7/bin/jconsole
 jconsole j/demo.ijs -> exit 0, 31 lines -> logs/j/demo.out
 jconsole verify/run.ijs -> exit 0; [PASS=15 FAIL=0 SKIP=3 BLOCKED=0] -> logs/j/verify.out
 j: PASS

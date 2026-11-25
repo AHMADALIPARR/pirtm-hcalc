@@ -1,0 +1,554 @@
+declared axioms in project modules: 55
+  axiom Hcalc.Foundry.State
+  axiom Hcalc.Foundry.State.add
+  axiom Hcalc.Foundry.State.smul
+  axiom Hcalc.Foundry.State.zero
+  axiom Hcalc.Foundry.nonlinearNorm
+  axiom Hcalc.Foundry.weightNorm
+  axiom Hcalc.Real
+  axiom Hcalc.deltaGuard
+  axiom Hcalc.deltaGuard_pos
+  axiom Hcalc.finMax
+  axiom Hcalc.finMax_abs_eq_zero_of
+  axiom Hcalc.linf_all_zero_eq_zero
+  axiom Hcalc.linf_nonneg
+  axiom Hcalc.natToReal
+  axiom Hcalc.natToReal_one
+  axiom Hcalc.natToReal_pos
+  axiom Hcalc.natToReal_zero
+  axiom Hcalc.realAbs
+  axiom Hcalc.realAdd
+  axiom Hcalc.realDiv
+  axiom Hcalc.realLog
+  axiom Hcalc.realLt
+  axiom Hcalc.realMin
+  axiom Hcalc.realMin_le_left
+  axiom Hcalc.realMin_le_right
+  axiom Hcalc.realMul
+  axiom Hcalc.realNeg
+  axiom Hcalc.realOne
+  axiom Hcalc.realZero
+  axiom Hcalc.real_abs_abs
+  axiom Hcalc.real_abs_eq_zero_iff
+  axiom Hcalc.real_abs_mul
+  axiom Hcalc.real_abs_nonneg
+  axiom Hcalc.real_abs_zero
+  axiom Hcalc.real_add_assoc
+  axiom Hcalc.real_add_comm
+  axiom Hcalc.real_add_zero
+  axiom Hcalc.real_contract_force_zero
+  axiom Hcalc.real_le_of_eq
+  axiom Hcalc.real_lt_asymm
+  axiom Hcalc.real_lt_irrefl
+  axiom Hcalc.real_mul_add
+  axiom Hcalc.real_mul_assoc
+  axiom Hcalc.real_mul_comm
+  axiom Hcalc.real_mul_one
+  axiom Hcalc.real_mul_zero
+  axiom Hcalc.real_neg_add_cancel
+  axiom Hcalc.real_one_mul
+  axiom Hcalc.real_zero_add
+  axiom Hcalc.real_zero_mul
+  axiom Hcalc.softScaleFactor
+  axiom Hcalc.softScaleFactor_of_gt
+  axiom Hcalc.softScaleFactor_of_le
+  axiom Hcalc.tolDefault
+  axiom Hcalc.tolDefault_pos
+theorems: 461
+axioms [Classical.choice, Quot.sound, propext]: 2 theorems
+    PirtmHcalc.Data.Agents.A06_lexical
+    PirtmHcalc.Data.Agents.invariants_sorted_set
+axioms [Hcalc.Foundry.State, Hcalc.Foundry.nonlinearNorm, Hcalc.Foundry.weightNorm, Hcalc.Real, Hcalc.realAdd, Hcalc.realLt, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.softScaleFactor, Hcalc.softScaleFactor_of_le, propext]: 1 theorems
+    Hcalc.Foundry.softProject_xi_of_le
+axioms [Hcalc.Foundry.State, Hcalc.Foundry.nonlinearNorm, Hcalc.Foundry.weightNorm, Hcalc.Real, Hcalc.realAdd, Hcalc.realMul, Hcalc.softScaleFactor]: 1 theorems
+    Hcalc.Foundry.softProject.eq_1
+axioms [Hcalc.Real, Hcalc.deltaGuard, Hcalc.finMax, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realMin, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Hcalc.softScaleFactor, Quot.sound, propext]: 1 theorems
+    Hcalc.Invariants.invariant_implies_prod
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.finMax_abs_eq_zero_of, Hcalc.linf_nonneg, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realLt, Hcalc.realMin, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Hcalc.real_add_assoc, Hcalc.real_add_comm, Hcalc.real_add_zero, Hcalc.real_contract_force_zero, Hcalc.real_mul_zero, Hcalc.real_neg_add_cancel, Hcalc.real_one_mul, Hcalc.real_zero_add, Hcalc.softScaleFactor, Quot.sound, propext]: 1 theorems
+    Hcalc.Convergence.unique_fp_step_of_hyp
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.finMax_abs_eq_zero_of, Hcalc.linf_nonneg, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realLt, Hcalc.realMin, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Hcalc.real_add_assoc, Hcalc.real_add_comm, Hcalc.real_add_zero, Hcalc.real_contract_force_zero, Hcalc.real_mul_zero, Hcalc.real_neg_add_cancel, Hcalc.real_zero_add, Hcalc.softScaleFactor, Quot.sound, propext]: 1 theorems
+    Hcalc.Convergence.unique_fp_stabilized_of_hyp
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.finMax_abs_eq_zero_of, Hcalc.linf_nonneg, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realLt, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Hcalc.real_add_assoc, Hcalc.real_add_comm, Hcalc.real_add_zero, Hcalc.real_contract_force_zero, Hcalc.real_neg_add_cancel, Hcalc.real_zero_add, Quot.sound]: 1 theorems
+    Hcalc.Convergence.unique_fixed_point
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.finMax_abs_eq_zero_of, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realNeg, Hcalc.realZero, Hcalc.real_add_assoc, Hcalc.real_add_comm, Hcalc.real_add_zero, Hcalc.real_neg_add_cancel, Hcalc.real_zero_add, Quot.sound]: 1 theorems
+    Hcalc.carrier_ext_of_linf_sub_eq_zero
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.linf_all_zero_eq_zero, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realMin, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Hcalc.real_abs_zero, Hcalc.real_add_zero, Hcalc.real_mul_zero, Hcalc.real_neg_add_cancel, Hcalc.real_one_mul, Hcalc.softScaleFactor, Quot.sound, propext]: 1 theorems
+    Hcalc.Convergence.J_at_zero
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.linf_all_zero_eq_zero, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realNeg, Hcalc.realZero, Hcalc.real_abs_zero, Hcalc.real_neg_add_cancel, Quot.sound]: 1 theorems
+    Hcalc.Convergence.residual_at_fixed_point
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.linf_all_zero_eq_zero, Hcalc.realAbs, Hcalc.realZero, Hcalc.real_abs_zero]: 1 theorems
+    Hcalc.linf_vzero
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realMin, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Hcalc.real_add_zero, Hcalc.real_mul_zero, Hcalc.real_one_mul, Hcalc.softScaleFactor, Quot.sound, propext]: 1 theorems
+    Hcalc.Convergence.step_fixes_zero
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realMin, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Hcalc.real_add_zero, Hcalc.real_one_mul, Hcalc.softScaleFactor, Quot.sound, propext]: 2 theorems
+    Hcalc.Pipeline.step_eq_stabilized
+    Hcalc.toFoundryStep_vs_hcalc_uniform_zero
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realMin, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Hcalc.real_mul_zero, Hcalc.softScaleFactor, Quot.sound, propext]: 1 theorems
+    Hcalc.Convergence.stabilized_fixes_zero
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realMin, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Hcalc.softScaleFactor, Quot.sound, propext]: 9 theorems
+    Hcalc.Invariants.invariant_and
+    Hcalc.Invariants.true_invariant
+    Hcalc.Pipeline.step.eq_1
+    Hcalc.Pipeline.step_eq
+    Hcalc.Pipeline.step_eq_Xi_contracted
+    Hcalc.hcalcStepCore.eq_1
+    Hcalc.hcalcStepCore_eq
+    Hcalc.toFoundryStep.eq_1
+    Hcalc.toFoundryStep_eq
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realMin, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, Hcalc.softScaleFactor, Quot.sound, propext]: 1 theorems
+    Hcalc.stabilized.eq_1
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.natToReal, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLog, Hcalc.realMul, Hcalc.realOne, Hcalc.softScaleFactor, Quot.sound, propext]: 1 theorems
+    Hcalc.C_circ_Tp.eq_1
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realLt, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne, propext]: 1 theorems
+    Hcalc.Convergence.HypContractive.mk.injEq
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realLt, Hcalc.realMul, Hcalc.realNeg, Hcalc.realOne]: 6 theorems
+    Hcalc.Convergence.HypContractive.lip
+    Hcalc.Convergence.HypContractive.mk.inj
+    Hcalc.Convergence.HypContractive.mk.sizeOf_spec
+    Hcalc.Convergence.HypContractive.q_lt_margin
+    Hcalc.Convergence.HypContractive.q_lt_one
+    Hcalc.Convergence.HypContractive.q_lt_one_sub_eps
+axioms [Hcalc.Real, Hcalc.finMax, Hcalc.realAbs, Hcalc.realAdd, Hcalc.realLt, Hcalc.realNeg, Hcalc.realOne, Hcalc.realZero, Quot.sound, propext]: 2 theorems
+    Hcalc.Convergence.contractiveG_from_bound
+    Hcalc.Foundry.contractiveG_iff
+axioms [Hcalc.Real, Hcalc.realAdd, Hcalc.realDiv, Hcalc.realLt, Hcalc.realNeg, Hcalc.realOne, Hcalc.softScaleFactor, Hcalc.softScaleFactor_of_gt]: 1 theorems
+    Hcalc.Foundry.softProjectScale_of_gt
+axioms [Hcalc.Real, Hcalc.realAdd, Hcalc.realLt, Hcalc.realNeg, Hcalc.realOne, Hcalc.softScaleFactor, Hcalc.softScaleFactor_of_le]: 1 theorems
+    Hcalc.Foundry.softProjectScale_of_le
+axioms [Hcalc.Real, Hcalc.realAdd, Hcalc.realMul, Hcalc.realOne, Hcalc.realZero, Hcalc.real_add_zero, Hcalc.real_one_mul, Quot.sound, propext]: 1 theorems
+    Hcalc.Xi_uniform_zero_kick
+axioms [Hcalc.Real, Hcalc.realAdd, Hcalc.realMul, Hcalc.realOne, Hcalc.realZero]: 1 theorems
+    Hcalc.Xi.eq_1
+axioms [Hcalc.Real, Hcalc.realAdd, Hcalc.realMul, Hcalc.real_mul_add, Quot.sound]: 1 theorems
+    Hcalc.vsmul_vadd
+axioms [Hcalc.Real, Hcalc.realAdd, Hcalc.realNeg, Hcalc.realZero, Hcalc.real_neg_add_cancel]: 1 theorems
+    Hcalc.real_sub_self
+axioms [Hcalc.Real, Hcalc.realAdd]: 1 theorems
+    Hcalc.vadd.eq_1
+axioms [Hcalc.Real, Hcalc.realMul, Hcalc.realZero, Hcalc.real_zero_mul, Quot.sound]: 1 theorems
+    Hcalc.vsmul_zero_left
+axioms [Hcalc.Real, Hcalc.realMul]: 1 theorems
+    Hcalc.vsmul.eq_1
+axioms [Hcalc.Real, Hcalc.realOne]: 1 theorems
+    Hcalc.xi.eq_1
+axioms [Hcalc.Real, Hcalc.realZero]: 2 theorems
+    Hcalc.gDefault.eq_1
+    Hcalc.vzero.eq_1
+axioms [Hcalc.Real, propext]: 2 theorems
+    Hcalc.Foundry.SoftScales.mk.injEq
+    Hcalc.InstanceBridge.mk.injEq
+axioms [Hcalc.Real]: 9 theorems
+    Hcalc.Foundry.SoftScales.mk.inj
+    Hcalc.Foundry.SoftScales.mk.sizeOf_spec
+    Hcalc.InstanceBridge.Lambda_vec_is_LambdaM
+    Hcalc.InstanceBridge.T_is_C_circ_Tp
+    Hcalc.InstanceBridge.Xi_vec_is_xi
+    Hcalc.InstanceBridge.g_is_g_t
+    Hcalc.InstanceBridge.mk.inj
+    Hcalc.InstanceBridge.mk.sizeOf_spec
+    Hcalc.InstanceBridge.param_table
+axioms [Quot.sound, propext]: 19 theorems
+    Hcalc.Foundry.P64_last
+    Hcalc.Foundry.P64_one
+    Hcalc.Foundry.P64_zero
+    PirtmHcalc.Alloy.Hcalc.badP2_other_facts
+    PirtmHcalc.Alloy.Hcalc.check_A7_production_defined_records
+    PirtmHcalc.Alloy.Hcalc.run_show_foundry_trace
+    PirtmHcalc.Alloy.Hcalc.run_show_hcalc_trace
+    PirtmHcalc.Alloy.Hcalc.run_vacuity_Contract
+    PirtmHcalc.Alloy.Hcalc.run_vacuity_Converge
+    PirtmHcalc.Alloy.Hcalc.run_vacuity_Evolve
+    PirtmHcalc.Alloy.Hcalc.run_vacuity_Optimize
+    PirtmHcalc.Alloy.Hcalc.run_vacuity_PrimeIndex
+    PirtmHcalc.Alloy.Hcalc.run_vacuity_Recursion
+    PirtmHcalc.Alloy.Hcalc.run_vacuity_Stabilize
+    PirtmHcalc.Alloy.Hcalc.run_vacuity_State
+    PirtmHcalc.Alloy.Hcalc.run_vacuity_Transform
+    PirtmHcalc.Alloy.Hcalc.witness_facts
+    PirtmHcalc.Alloy.HcalcMirror.hcalc_P2_countermodel
+    PirtmHcalc.Alloy.HcalcMirror.weights_positive_falsifiable
+axioms []: 313 theorems
+    Hcalc.Foundry.p64List_length
+    Hcalc.definitionRecord_C
+    Hcalc.definitionRecord_Carrier
+    Hcalc.definitionRecord_ContractAlg
+    Hcalc.definitionRecord_Converge
+    Hcalc.definitionRecord_LambdaM
+    Hcalc.definitionRecord_OptObj
+    Hcalc.definitionRecord_ShapeMap
+    Hcalc.definitionRecord_Tp
+    Hcalc.definitionRecord_Xi
+    PIRTM.Core.CausalPath.brecOn.eq
+    PIRTM.Core.CausalPath.direct.sizeOf_spec
+    PIRTM.Core.CausalPath.step.inj
+    PIRTM.Core.CausalPath.step.sizeOf_spec
+    PIRTM.Core.FuelBoundedExecution.brecOn
+    PIRTM.Core.InferenceStep.continue.inj
+    PIRTM.Core.InferenceStep.continue.sizeOf_spec
+    PIRTM.Core.InferenceStep.fixedPoint.inj
+    PIRTM.Core.InferenceStep.fixedPoint.sizeOf_spec
+    PIRTM.Core.SystemState.mk.inj
+    PIRTM.Core.SystemState.mk.sizeOf_spec
+    PIRTM.Core.causal_acyclic
+    PIRTM.Core.causal_strict
+    PIRTM.Core.state_preservation
+    PIRTM.Invariants.AdversarialStates.global_distinct
+    PIRTM.Invariants.AdversarialStates.local_identical
+    PIRTM.Invariants.AdversarialStates.mk.inj
+    PIRTM.Invariants.AdversarialStates.mk.sizeOf_spec
+    PIRTM.Invariants.InvertibleOp.left_inv
+    PIRTM.Invariants.InvertibleOp.mk.inj
+    PIRTM.Invariants.InvertibleOp.mk.sizeOf_spec
+    PIRTM.Invariants.InvertibleOp.right_inv
+    PIRTM.Invariants.NonInjectiveMap.collapse
+    PIRTM.Invariants.NonInjectiveMap.distinct
+    PIRTM.Invariants.NonInjectiveMap.mk.inj
+    PIRTM.Invariants.NonInjectiveMap.mk.sizeOf_spec
+    PIRTM.Invariants.ReversibleCodec.mk.inj
+    PIRTM.Invariants.ReversibleCodec.mk.sizeOf_spec
+    PIRTM.Invariants.ReversibleCodec.roundtrip
+    PIRTM.Invariants.WorkerResult.mk.inj
+    PIRTM.Invariants.WorkerResult.mk.sizeOf_spec
+    PIRTM.Invariants.adversarial_global_distinguishable
+    PIRTM.Invariants.adversarial_subsystem_indistinguishable
+    PIRTM.Invariants.bit_flip_involutive
+    PIRTM.Invariants.codec_roundtrip_lemma
+    PIRTM.Invariants.observation_non_unique
+    PIRTM.Invariants.worker_isolation_lemma
+    PIRTM.Quantum11.Gate11.cnot.inj
+    PIRTM.Quantum11.Gate11.cnot.sizeOf_spec
+    PIRTM.Quantum11.Gate11.h.inj
+    PIRTM.Quantum11.Gate11.h.sizeOf_spec
+    PIRTM.Quantum11.Gate11.id.inj
+    PIRTM.Quantum11.Gate11.id.sizeOf_spec
+    PIRTM.Quantum11.Gate11.x.inj
+    PIRTM.Quantum11.Gate11.x.sizeOf_spec
+    PIRTM.Quantum11.Gate11.z.inj
+    PIRTM.Quantum11.Gate11.z.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A01_temporal.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A02_reversible.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A03_coords.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A04_measurement.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A05_encoding.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A06_ambiguity.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A07_recursive.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A08_restricted_observer.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A09_entropy.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A10_agda.sizeOf_spec
+    PIRTM.Quantum11.WorkerRole.A11_adversarial.sizeOf_spec
+    PIRTM.Quantum11.gate_inv_self
+    PIRTM.Quantum11.state_dim_eq
+    PIRTM.Quantum11.worker_roles_distinct
+    PirtmHcalc.Agda.AgentResult.mk.inj
+    PirtmHcalc.Agda.AgentResult.mk.sizeOf_spec
+    PirtmHcalc.Agda.ArtifactReference.mk.inj
+    PirtmHcalc.Agda.ArtifactReference.mk.sizeOf_spec
+    PirtmHcalc.Agda.CausalPath.brecOn
+    PirtmHcalc.Agda.Claim.mk.inj
+    PirtmHcalc.Agda.Claim.mk.sizeOf_spec
+    PirtmHcalc.Agda.ComplexInnerSpace.mk.inj
+    PirtmHcalc.Agda.ComplexInnerSpace.mk.sizeOf_spec
+    PirtmHcalc.Agda.ComplexInnerSpace.positiveDefinite
+    PirtmHcalc.Agda.ExactGate.mk.inj
+    PirtmHcalc.Agda.ExactGate.mk.sizeOf_spec
+    PirtmHcalc.Agda.FuelBoundedExecution.brecOn
+    PirtmHcalc.Agda.HolographicBoundAssumption.boundDimensionLe
+    PirtmHcalc.Agda.HolographicBoundAssumption.mk.inj
+    PirtmHcalc.Agda.HolographicBoundAssumption.mk.sizeOf_spec
+    PirtmHcalc.Agda.I01_state_preservation
+    PirtmHcalc.Agda.I03_provenance_integrity
+    PirtmHcalc.Agda.I04_immutability
+    PirtmHcalc.Agda.I05_termination
+    PirtmHcalc.Agda.I06_unitarity_preservation
+    PirtmHcalc.Agda.I07_probability_normalization
+    PirtmHcalc.Agda.I08_encoding_integrity
+    PirtmHcalc.Agda.I09_observation_boundary_lossy
+    PirtmHcalc.Agda.I10_agent_isolation
+    PirtmHcalc.Agda.I11_evidence_classification
+    PirtmHcalc.Agda.InferenceStep.continue.inj
+    PirtmHcalc.Agda.InferenceStep.continue.sizeOf_spec
+    PirtmHcalc.Agda.InferenceStep.fixedPoint.inj
+    PirtmHcalc.Agda.InferenceStep.fixedPoint.sizeOf_spec
+    PirtmHcalc.Agda.Lt.brecOn
+    PirtmHcalc.Agda.NonInjectiveObservation.collapse
+    PirtmHcalc.Agda.NonInjectiveObservation.distinct
+    PirtmHcalc.Agda.NonInjectiveObservation.mk.inj
+    PirtmHcalc.Agda.NonInjectiveObservation.mk.sizeOf_spec
+    PirtmHcalc.Agda.ProbabilityDistribution.isNormalized
+    PirtmHcalc.Agda.ProbabilityDistribution.mk.inj
+    PirtmHcalc.Agda.ProbabilityDistribution.mk.sizeOf_spec
+    PirtmHcalc.Agda.ProvenanceCertificate.mk.inj
+    PirtmHcalc.Agda.ProvenanceCertificate.mk.sizeOf_spec
+    PirtmHcalc.Agda.ProvenanceCertificate.provenanceValid
+    PirtmHcalc.Agda.PublishedArtifact.mk.inj
+    PirtmHcalc.Agda.PublishedArtifact.mk.sizeOf_spec
+    PirtmHcalc.Agda.ReversibleCodec.mk.inj
+    PirtmHcalc.Agda.ReversibleCodec.mk.sizeOf_spec
+    PirtmHcalc.Agda.ReversibleCodec.reconstruct
+    PirtmHcalc.Agda.SystemState.mk.inj
+    PirtmHcalc.Agda.SystemState.mk.sizeOf_spec
+    PirtmHcalc.Agda.VerificationStatus.Unverified.sizeOf_spec
+    PirtmHcalc.Agda.VerificationStatus.Verified.sizeOf_spec
+    PirtmHcalc.Agda.VerificationStatus.ofNat_ctorIdx
+    PirtmHcalc.Agda.lt_iff
+    PirtmHcalc.Agda.runFuel.eq_def
+    PirtmHcalc.Alloy.Hcalc.A2_is_fact
+    PirtmHcalc.Alloy.Hcalc.A3_is_fact
+    PirtmHcalc.Alloy.Hcalc.A5_is_fact
+    PirtmHcalc.Alloy.Hcalc.A6_is_fact
+    PirtmHcalc.Alloy.Hcalc.AlphaLawKind.SpecAlphaLaw.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.AlphaLawKind.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.BridgeMode.FoundryAdditive.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.BridgeMode.InstanceBridge.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.BridgeMode.NestedFaithful.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.BridgeMode.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.CMode.ScaleOrId.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.CMode.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.ContractAlgKind.GershgorinThenScaleOrId.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.ContractAlgKind.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.DefStatus.SpecDefined.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.DefStatus.Undefined.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.DefStatus.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.EpsilonTier.T1.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.EpsilonTier.T2.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.EpsilonTier.T3.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.EpsilonTier.T4.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.EpsilonTier.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.Facts.A1_card
+    PirtmHcalc.Alloy.Hcalc.Facts.A1_index
+    PirtmHcalc.Alloy.Hcalc.Facts.A2
+    PirtmHcalc.Alloy.Hcalc.Facts.A3
+    PirtmHcalc.Alloy.Hcalc.Facts.A5
+    PirtmHcalc.Alloy.Hcalc.Facts.A6
+    PirtmHcalc.Alloy.Hcalc.Facts.A7
+    PirtmHcalc.Alloy.Hcalc.Facts.P1
+    PirtmHcalc.Alloy.Hcalc.Facts.P2
+    PirtmHcalc.Alloy.Hcalc.Facts.P3
+    PirtmHcalc.Alloy.Hcalc.Facts.P4
+    PirtmHcalc.Alloy.Hcalc.Facts.P5
+    PirtmHcalc.Alloy.Hcalc.Facts.P6
+    PirtmHcalc.Alloy.Hcalc.Facts.P7
+    PirtmHcalc.Alloy.Hcalc.Facts.P8
+    PirtmHcalc.Alloy.Hcalc.Facts.bridge
+    PirtmHcalc.Alloy.Hcalc.Facts.c_not_soft
+    PirtmHcalc.Alloy.Hcalc.Facts.converge
+    PirtmHcalc.Alloy.Hcalc.Facts.evolution_total
+    PirtmHcalc.Alloy.Hcalc.Facts.evolve
+    PirtmHcalc.Alloy.Hcalc.Facts.extension
+    PirtmHcalc.Alloy.Hcalc.Facts.lam_not_schedule
+    PirtmHcalc.Alloy.Hcalc.Facts.lam_not_schedule'
+    PirtmHcalc.Alloy.Hcalc.Facts.measure_links
+    PirtmHcalc.Alloy.Hcalc.Facts.measure_reflexive
+    PirtmHcalc.Alloy.Hcalc.Facts.multimodal
+    PirtmHcalc.Alloy.Hcalc.Facts.primes_subset
+    PirtmHcalc.Alloy.Hcalc.Facts.recursion_depth
+    PirtmHcalc.Alloy.Hcalc.Facts.stabilize
+    PirtmHcalc.Alloy.Hcalc.Facts.state_measure_functional
+    PirtmHcalc.Alloy.Hcalc.Facts.time_linear_chain
+    PirtmHcalc.Alloy.Hcalc.Facts.tp_index
+    PirtmHcalc.Alloy.Hcalc.Facts.tp_unique
+    PirtmHcalc.Alloy.Hcalc.GapId.C.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GapId.Carrier.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GapId.ContractAlg.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GapId.Converge.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GapId.HCALC_Xi.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GapId.LambdaM.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GapId.OptObj.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GapId.ShapeMap.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GapId.Tp.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GapId.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.GuardianVerdict.Accept.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GuardianVerdict.Reject.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.GuardianVerdict.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.INV_LambdaM_is_fact
+    PirtmHcalc.Alloy.Hcalc.INV_contract_is_fact
+    PirtmHcalc.Alloy.Hcalc.INV_converge_is_fact
+    PirtmHcalc.Alloy.Hcalc.INV_evolution_is_fact
+    PirtmHcalc.Alloy.Hcalc.INV_evolve_reachable_is_fact
+    PirtmHcalc.Alloy.Hcalc.INV_multimodal_is_fact
+    PirtmHcalc.Alloy.Hcalc.INV_optimize_is_fact
+    PirtmHcalc.Alloy.Hcalc.INV_prime_bounded_is_fact
+    PirtmHcalc.Alloy.Hcalc.INV_recursion_is_fact
+    PirtmHcalc.Alloy.Hcalc.INV_step_shape_is_fact
+    PirtmHcalc.Alloy.Hcalc.InstanceKind.FoundryInstance.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.InstanceKind.HCALCInstance.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.InstanceKind.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.Model.mk.inj
+    PirtmHcalc.Alloy.Hcalc.Model.mk.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.NormKind.LInf.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.NormKind.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.ObjKind.ResidualObj.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.ObjKind.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.P1_is_fact
+    PirtmHcalc.Alloy.Hcalc.P2_is_fact
+    PirtmHcalc.Alloy.Hcalc.P3_is_fact
+    PirtmHcalc.Alloy.Hcalc.P4_is_fact
+    PirtmHcalc.Alloy.Hcalc.P5_is_fact
+    PirtmHcalc.Alloy.Hcalc.P6_is_fact
+    PirtmHcalc.Alloy.Hcalc.P7_is_fact
+    PirtmHcalc.Alloy.Hcalc.P8_is_fact
+    PirtmHcalc.Alloy.Hcalc.XiScheduleKind.UniformXi.sizeOf_spec
+    PirtmHcalc.Alloy.Hcalc.XiScheduleKind.ofNat_ctorIdx
+    PirtmHcalc.Alloy.Hcalc.allGaps.eq_1
+    PirtmHcalc.Alloy.Hcalc.check_A1_P64_cardinality_and_distinct
+    PirtmHcalc.Alloy.Hcalc.check_A1b_P64_distinct_indices
+    PirtmHcalc.Alloy.Hcalc.check_A2_contractive_iff_gershgorin_bound
+    PirtmHcalc.Alloy.Hcalc.check_A3_soft_project_when_q_over_margin
+    PirtmHcalc.Alloy.Hcalc.check_A5_PMAT_conservation_gated
+    PirtmHcalc.Alloy.Hcalc.check_A6_guardian_reject_spectral_or_nonfinite
+    PirtmHcalc.Alloy.Hcalc.check_INV_LambdaM_scalar_placeholder
+    PirtmHcalc.Alloy.Hcalc.check_INV_contract_measure_non_increase
+    PirtmHcalc.Alloy.Hcalc.check_INV_converge_hyps_production
+    PirtmHcalc.Alloy.Hcalc.check_INV_evolution_total_on_State
+    PirtmHcalc.Alloy.Hcalc.check_INV_evolve_total_State_reachable
+    PirtmHcalc.Alloy.Hcalc.check_INV_multimodal_tensor_wiring
+    PirtmHcalc.Alloy.Hcalc.check_INV_optimize_objective_residual
+    PirtmHcalc.Alloy.Hcalc.check_INV_prime_index_bounded_to_P64
+    PirtmHcalc.Alloy.Hcalc.check_INV_recursion_uses_prime_index
+    PirtmHcalc.Alloy.Hcalc.check_INV_step_shape_bridge_instance
+    PirtmHcalc.Alloy.Hcalc.check_P1_carrier_linf_dim
+    PirtmHcalc.Alloy.Hcalc.check_P2_tp_diag_spec_alpha
+    PirtmHcalc.Alloy.Hcalc.check_P3_c_scale_or_id
+    PirtmHcalc.Alloy.Hcalc.check_P4_lambda_m_scalar_bound
+    PirtmHcalc.Alloy.Hcalc.check_P5_xi_uniform_affine
+    PirtmHcalc.Alloy.Hcalc.check_P6_instance_bridge_morphism
+    PirtmHcalc.Alloy.Hcalc.check_P7_optobj_residual
+    PirtmHcalc.Alloy.Hcalc.check_P8_contractalg_gershgorin_then_c
+    PirtmHcalc.Alloy.HcalcMirror.A7Model.mk.inj
+    PirtmHcalc.Alloy.HcalcMirror.A7Model.mk.sizeOf_spec
+    PirtmHcalc.Alloy.HcalcMirror.AlphaLawKind.SpecAlphaLaw.sizeOf_spec
+    PirtmHcalc.Alloy.HcalcMirror.AlphaLawKind.ofNat_ctorIdx
+    PirtmHcalc.Alloy.HcalcMirror.Cell.mk.inj
+    PirtmHcalc.Alloy.HcalcMirror.Cell.mk.sizeOf_spec
+    PirtmHcalc.Alloy.HcalcMirror.DefStatus.SpecDefined.sizeOf_spec
+    PirtmHcalc.Alloy.HcalcMirror.DefStatus.ofNat_ctorIdx
+    PirtmHcalc.Alloy.HcalcMirror.TpMap.mk.inj
+    PirtmHcalc.Alloy.HcalcMirror.TpMap.mk.sizeOf_spec
+    PirtmHcalc.Alloy.HcalcMirror.check_hcalc_A7_assert
+    PirtmHcalc.Alloy.HcalcMirror.check_hcalc_P2_assert
+    PirtmHcalc.Alloy.HcalcMirror.check_weights_positive
+    PirtmHcalc.Alloy.HcalcMirror.generator.eq_1
+    PirtmHcalc.Alloy.HcalcMirror.hcalc_A7_assert_without_fact
+    PirtmHcalc.Alloy.HcalcMirror.hcalc_P2_assert.eq_1
+    PirtmHcalc.Alloy.HcalcMirror.hcalc_P2_assert_iff_fact
+    PirtmHcalc.Alloy.HcalcMirror.weights_positive.eq_1
+    PirtmHcalc.Alloy.VacuityDemo.Moon.mk.inj
+    PirtmHcalc.Alloy.VacuityDemo.Moon.mk.sizeOf_spec
+    PirtmHcalc.Alloy.VacuityDemo.MoonIsCheese.eq_1
+    PirtmHcalc.Alloy.VacuityDemo.MoonIsCheese_iff_fact
+    PirtmHcalc.Alloy.VacuityDemo.any_claim_passes
+    PirtmHcalc.Alloy.VacuityDemo.check_MoonIsCheese
+    PirtmHcalc.Data.A01_logged_near_exact
+    PirtmHcalc.Data.A03_logged_max_err
+    PirtmHcalc.Data.A08_purity_value
+    PirtmHcalc.Data.Agents.totals
+    PirtmHcalc.Data.Goldilocks.fold_identities
+    PirtmHcalc.Data.Goldilocks.fold_vs_ref_200
+    PirtmHcalc.Data.Goldilocks.logged_add
+    PirtmHcalc.Data.Goldilocks.logged_fermat_a
+    PirtmHcalc.Data.Goldilocks.logged_inv_a
+    PirtmHcalc.Data.Goldilocks.logged_inv_is_fermat
+    PirtmHcalc.Data.Goldilocks.logged_mul
+    PirtmHcalc.Data.Goldilocks.logged_mul_pm1_sq
+    PirtmHcalc.Data.Goldilocks.logged_pow_7_100
+    PirtmHcalc.Data.Goldilocks.logged_sub
+    PirtmHcalc.Data.Goldilocks.logged_sub_rev
+    PirtmHcalc.Data.Goldilocks.p_def
+    PirtmHcalc.Data.rho_logged_near_half
+    PirtmHcalc.Data.roundtrip7_logged_near_one
+    PirtmHcalc.Quantum.Dy.mk.inj
+    PirtmHcalc.Quantum.Dy.mk.sizeOf_spec
+    PirtmHcalc.Quantum.GInt.mk.inj
+    PirtmHcalc.Quantum.GInt.mk.sizeOf_spec
+    PirtmHcalc.Quantum.Gate.CNOT.inj
+    PirtmHcalc.Quantum.Gate.CNOT.sizeOf_spec
+    PirtmHcalc.Quantum.Gate.H.inj
+    PirtmHcalc.Quantum.Gate.H.sizeOf_spec
+    PirtmHcalc.Quantum.Gate.S.inj
+    PirtmHcalc.Quantum.Gate.S.sizeOf_spec
+    PirtmHcalc.Quantum.Gate.Sdg.inj
+    PirtmHcalc.Quantum.Gate.Sdg.sizeOf_spec
+    PirtmHcalc.Quantum.Gate.X.inj
+    PirtmHcalc.Quantum.Gate.X.sizeOf_spec
+    PirtmHcalc.Quantum.Gate.Y.inj
+    PirtmHcalc.Quantum.Gate.Y.sizeOf_spec
+    PirtmHcalc.Quantum.Gate.Z.inj
+    PirtmHcalc.Quantum.Gate.Z.sizeOf_spec
+    PirtmHcalc.Quantum.QT.brecOn.eq
+    PirtmHcalc.Quantum.QT.leaf.inj
+    PirtmHcalc.Quantum.QT.leaf.sizeOf_spec
+    PirtmHcalc.Quantum.QT.node.inj
+    PirtmHcalc.Quantum.QT.node.sizeOf_spec
+    PirtmHcalc.Quantum.State.mk.inj
+    PirtmHcalc.Quantum.State.mk.sizeOf_spec
+axioms [propext]: 70 theorems
+    PIRTM.Core.CausalPath.step.injEq
+    PIRTM.Core.InferenceStep.continue.injEq
+    PIRTM.Core.InferenceStep.fixedPoint.injEq
+    PIRTM.Core.SystemState.mk.injEq
+    PIRTM.Invariants.AdversarialStates.mk.injEq
+    PIRTM.Invariants.InvertibleOp.mk.injEq
+    PIRTM.Invariants.NonInjectiveMap.mk.injEq
+    PIRTM.Invariants.ReversibleCodec.mk.injEq
+    PIRTM.Invariants.WorkerResult.mk.injEq
+    PIRTM.Quantum11.Gate11.cnot.injEq
+    PIRTM.Quantum11.Gate11.h.injEq
+    PIRTM.Quantum11.Gate11.id.injEq
+    PIRTM.Quantum11.Gate11.x.injEq
+    PIRTM.Quantum11.Gate11.z.injEq
+    PIRTM.Quantum11.circuit_inverse_involutive
+    PirtmHcalc.Agda.AgentResult.mk.injEq
+    PirtmHcalc.Agda.ArtifactReference.mk.injEq
+    PirtmHcalc.Agda.Claim.mk.injEq
+    PirtmHcalc.Agda.ComplexInnerSpace.mk.injEq
+    PirtmHcalc.Agda.ExactGate.mk.injEq
+    PirtmHcalc.Agda.HolographicBoundAssumption.mk.injEq
+    PirtmHcalc.Agda.I02_causal_ordering
+    PirtmHcalc.Agda.InferenceStep.continue.injEq
+    PirtmHcalc.Agda.InferenceStep.fixedPoint.injEq
+    PirtmHcalc.Agda.NonInjectiveObservation.mk.injEq
+    PirtmHcalc.Agda.ProbabilityDistribution.mk.injEq
+    PirtmHcalc.Agda.ProvenanceCertificate.mk.injEq
+    PirtmHcalc.Agda.PublishedArtifact.mk.injEq
+    PirtmHcalc.Agda.ReversibleCodec.mk.injEq
+    PirtmHcalc.Agda.SystemState.mk.injEq
+    PirtmHcalc.Agda.causal_strict
+    PirtmHcalc.Agda.lt_irrefl
+    PirtmHcalc.Agda.lt_trans
+    PirtmHcalc.Alloy.Hcalc.Model.mk.injEq
+    PirtmHcalc.Alloy.Hcalc.P2_fails_without_its_fact
+    PirtmHcalc.Alloy.Hcalc.check_A4_foundry_additive_only_if_Foundry_instance
+    PirtmHcalc.Alloy.HcalcMirror.A7Model.mk.injEq
+    PirtmHcalc.Alloy.HcalcMirror.Cell.mk.injEq
+    PirtmHcalc.Alloy.HcalcMirror.TpMap.mk.injEq
+    PirtmHcalc.Alloy.VacuityDemo.Moon.mk.injEq
+    PirtmHcalc.Alloy.VacuityDemo.control_countermodel
+    PirtmHcalc.Data.A01_transition_fidelities
+    PirtmHcalc.Data.A02_norm_and_roundtrip
+    PirtmHcalc.Data.A03_uniform_superposition
+    PirtmHcalc.Data.A04_born_probabilities
+    PirtmHcalc.Data.A05_encoding
+    PirtmHcalc.Data.A08_purity
+    PirtmHcalc.Data.adversarial_conclusion
+    PirtmHcalc.Data.bell_amplitudes
+    PirtmHcalc.Data.bell_probabilities
+    PirtmHcalc.Data.classical_baseline
+    PirtmHcalc.Data.global_fidelity_zero
+    PirtmHcalc.Data.psi_normalized
+    PirtmHcalc.Data.psi_support
+    PirtmHcalc.Data.reduced_states_equal
+    PirtmHcalc.Data.reduced_trace_distance_zero
+    PirtmHcalc.Data.roundtrip7_back
+    PirtmHcalc.Data.roundtrip7_forward
+    PirtmHcalc.Quantum.Dy.mk.injEq
+    PirtmHcalc.Quantum.GInt.mk.injEq
+    PirtmHcalc.Quantum.Gate.CNOT.injEq
+    PirtmHcalc.Quantum.Gate.H.injEq
+    PirtmHcalc.Quantum.Gate.S.injEq
+    PirtmHcalc.Quantum.Gate.Sdg.injEq
+    PirtmHcalc.Quantum.Gate.X.injEq
+    PirtmHcalc.Quantum.Gate.Y.injEq
+    PirtmHcalc.Quantum.Gate.Z.injEq
+    PirtmHcalc.Quantum.QT.leaf.injEq
+    PirtmHcalc.Quantum.QT.node.injEq
+    PirtmHcalc.Quantum.State.mk.injEq

@@ -9,6 +9,13 @@
 [![J](https://img.shields.io/badge/J-array%20computing-0077aa)](j/)
 [![Quipper](https://img.shields.io/badge/Quipper-quantum%20circuits-006666)](quipper/)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-blue)](LICENSE)
+[![CI](https://github.com/AHMADALIPARR/pirtm-hcalc/actions/workflows/ci.yml/badge.svg)](https://github.com/AHMADALIPARR/pirtm-hcalc/actions/workflows/ci.yml)
+[![j](https://img.shields.io/badge/j-PASS-brightgreen)](logs/j/SUMMARY.txt)
+[![mlir](https://img.shields.io/badge/mlir-PASS-brightgreen)](logs/mlir/SUMMARY.txt)
+[![irdl](https://img.shields.io/badge/irdl-PASS-brightgreen)](logs/mlir/IRDL.txt)
+[![quipper](https://img.shields.io/badge/quipper-PASS-brightgreen)](logs/quipper/SUMMARY.txt)
+[![lean](https://img.shields.io/badge/lean-PASS-brightgreen)](logs/lean/SUMMARY.txt)
+[![clean build](https://img.shields.io/badge/clean%20lake%20build-1m19s-blue)](logs/lean/build-clean.log)
 
 **Ahmad Parr · Version 0.1.0**
 
@@ -29,13 +36,13 @@ Reference comparison ──→ Evidence logs
 
 ---
 
-PIRTM–HCALC is a unified research workspace for causal and reversible computation, exact finite quantum-state simulation, prime-indexed contraction dynamics, and cross-language numerical verification. It brings two source baselines into one Lake package, retaining their mathematical boundaries while introducing exact computational models and custom compiler operations. The current workspace additionally includes the Foundry F1 J stack, a TableGen dialect, native C++ field arithmetic and NASM digest interfaces.
+PIRTM–HCALC is a unified production package for causal and reversible computation, exact finite quantum-state simulation, prime-indexed contraction dynamics, and cross-language numerical verification. It brings two source baselines into one Lake package, retaining their mathematical boundaries while introducing exact computational models and custom compiler operations. The package additionally includes the Foundry F1 J stack, a TableGen dialect, native C++ field arithmetic and NASM digest interfaces.
 
 | 461 audited theorems | 2,048 quantum amplitudes | 27 historical IRDL operations | 5 verification subsystems |
 |:---:|:---:|:---:|:---:|
 | 313 empty axiom sets | 11 qubits | 2 IRDL dialects + Foundry TableGen | 55 declared project axioms |
 
-**Historical verification baseline:** repository revision [`58f5a8a`](https://github.com/AHMADALIPARR/pirtm-hcalc/tree/58f5a8a32b0ad8eccf476dcda0b0613b6c7f827e), with committed verification logs dated November 23, 2026. Counts refer to the historical source or recorded audit, not a newly performed build. Current source inventory: Git tree `f3e8c5a196f7ca8674bfda5a0fcb5a868fcf234f` (November 24, 2026). The 46 new Foundry operations are documented separately.
+**Production verification baseline:** full pipeline run at revision [`63dffec`](https://github.com/AHMADALIPARR/pirtm-hcalc/tree/63dffec650a9781f94d8120f92cdb1bca45fb7ba) — `lake script run all` exit 0 on November 25, 2026, all five stages PASS (j, mlir, irdl, quipper, lean); GitHub Actions CI run [45509935546](https://github.com/AHMADALIPARR/pirtm-hcalc/actions/runs/45509935546) completed success on the same commit. Counts below are from that measured run and the recorded audit. The 46 Foundry operations are documented separately.
 
 ## Contents
 
@@ -69,7 +76,7 @@ PIRTM–HCALC is a unified research workspace for causal and reversible computat
 23. [Quipper circuit representation and cross-backend comparison](#quipper-circuit-representation-and-cross-backend-comparison)
 24. [Verification driver: exact acceptance semantics](#verification-driver-exact-acceptance-semantics)
 25. [Axiom audit: quantitative and qualitative interpretation](#axiom-audit-quantitative-and-qualitative-interpretation)
-26. [Assurance matrix: established scope and stronger research obligations](#assurance-matrix-established-scope-and-stronger-research-obligations)
+26. [Assurance matrix: established scope and remaining obligations](#assurance-matrix-established-scope-and-remaining-obligations)
 27. [Foundry F1: J, TableGen and native kernels](#foundry-f1-j-tablegen-and-native-kernels)
 28. [Current tracked file inventory](#current-tracked-file-inventory)
 29. [Figure provenance](#figure-provenance)
@@ -77,7 +84,7 @@ PIRTM–HCALC is a unified research workspace for causal and reversible computat
 
 ## Overview
 
-PIRTM–HCALC brings two research codebases into a single Lake package. PIRTM models causal histories, reversible transformations, finite quantum experiments, observation boundaries and worker aggregation. HCALC models a nested state recurrence driven by prime-indexed diagonal weights, contraction control and stabilization. The combined workspace includes exact Lean computations, numerical MLIR and J programs, and Quipper circuit descriptions.
+PIRTM–HCALC brings two codebases into a single Lake package. PIRTM models causal histories, reversible transformations, finite quantum experiments, observation boundaries and worker aggregation. HCALC models a nested state recurrence driven by prime-indexed diagonal weights, contraction control and stabilization. The combined package includes exact Lean computations, numerical MLIR and J programs, and Quipper circuit descriptions.
 
 The central design is to expose several distinct kinds of evidence: kernel-checked propositions, exact finite computations, numerical reference comparisons, and IR structural validation. Each has a different scope. In particular, HCALC's abstract real-number assumptions remain explicit, and matching backend output is separate from a universal equivalence proof.
 
@@ -129,7 +136,7 @@ no float on the Real / decide path
 pirtm-hcalc  multi-surface contract  seed=11
 ```
 
-The supplied diagram expresses the cross-surface research design. Its equality markers are schematic, not a universal equivalence theorem. Exact quantum and field values are computed in Lean; the HCALC real-number path instead uses abstract noncomputable operations. J and MLIR compare HCALC numerics, while Quipper supplies quantum circuits and associated numerical results. The exact experiment module uses individual decimal proximity bounds with an exponent parameter, rather than a single blanket bound for all outputs.
+The supplied diagram expresses the cross-surface design. Its equality markers are schematic, not a universal equivalence theorem. Exact quantum and field values are computed in Lean; the HCALC real-number path instead uses abstract noncomputable operations. J and MLIR compare HCALC numerics, while Quipper supplies quantum circuits and associated numerical results. The exact experiment module uses individual decimal proximity bounds with an exponent parameter, rather than a single blanket bound for all outputs.
 
 ```text
 │d/10ᵉ − m/2ᵏ│ ≤ 2⁻ᵘ
@@ -789,9 +796,26 @@ lake script run all
 
 The combined driver visits J, MLIR, IRDL, Quipper and Lean in that order and reports failure if any subsystem returns a failing result. Generated MLIR intermediates are stored under `.lake/mlir/`.
 
+### Measured build and pipeline timings
+
+Measured November 25, 2026, at repository revision `63dffec`, on the build machine: 4 CPUs, 7.7 GiB RAM, Ubuntu; Lean 4.34.1, J 9.7, LLVM 19.1.1 (`mlir-opt`, `mlir-cpu-runner`), GHC 8.8.4, cabal 3.16.1.0. These are measured timings of the pipeline as shipped. The repository has no benchmark suite, so these are presented as pipeline timings and verification results, not as a benchmark suite. The GitHub Actions workflow runs the Lean job only; the full five-stage pipeline runs locally with `lake script run all`.
+
+| Stage | Result | Measured time | Evidence |
+|---|---|---|---|
+| j | PASS | 3.8 s | [logs/j/SUMMARY.txt](logs/j/SUMMARY.txt) |
+| mlir | PASS | 6.3 s | [logs/mlir/SUMMARY.txt](logs/mlir/SUMMARY.txt) |
+| irdl | PASS | 1.8 s | [logs/mlir/IRDL.txt](logs/mlir/IRDL.txt) |
+| quipper | PASS | 3 m 46 s cold build; seconds once cached | [logs/quipper/SUMMARY.txt](logs/quipper/SUMMARY.txt) |
+| lean | PASS | about 48 s in the combined run; clean build 1 m 19.31 s | [logs/lean/SUMMARY.txt](logs/lean/SUMMARY.txt) |
+| `lake script run all` | PASS — all five stages | 57.2 s wall | [logs/SUMMARY.txt](logs/SUMMARY.txt) |
+
+The stage times were measured on the individual stage runs. The combined run reuses warm build caches: the Quipper stage, whose first `cabal build` on this host took 3 m 46 s, finished within a second (stamps 15:56:58 → 15:56:59 UTC), and the lean stage took about 48 s (stamps 15:56:59 → 15:57:47 UTC) for the incremental build, the escape-word scan and the axiom audit.
+
+The clean `lake build` (28 jobs, exit 0) took 1 m 19.31 s wall, with maximum resident set size 936,152 KB (about 914 MiB) and 0 swaps, measured with `/usr/bin/time -v`; the per-module times are in [`logs/lean/build-clean.log`](logs/lean/build-clean.log). The Quipper cold build needed `libgmp-dev` and `libffi-dev` installed on the build host — a host-only fix, not a change to this repository.
+
 ## Verification evidence
 
-The following results are from committed logs dated November 23, 2026. They describe a recorded run, not a fresh CI run or a new independent build of this checkout.
+The following results are from the full pipeline run on November 25, 2026, at repository revision `63dffec` — a fresh local run of this checkout, with the logs below. The GitHub Actions workflow covers the Lean job on the same commit (run 45509935546, completed success); the J, MLIR, IRDL and Quipper stages run locally.
 
 | Subsystem | Recorded result | Evidence |
 |---|---|---|
@@ -819,11 +843,11 @@ The subsequence predicate permits extra lines; the membership predicate does not
 
 ### J and Quipper
 
-The recorded J harness reports 15 passed properties, zero failures, three skips and zero blocked properties. Its demo contains 31 lines. The Quipper log reports successful build and run, with 242 output lines including 53 printed gate lines, and exact equality of the filtered numerical output with the archived reference.
+The J harness reports 15 passed properties, zero failures, three skips and zero blocked properties. Its demo contains 31 lines. The Quipper log reports successful build and run, with 242 output lines including 53 printed gate lines, and exact equality of the filtered numerical output with the archived reference.
 
 ### Lean audit
 
-The committed Lean summary records build exit code zero, zero whole-word occurrences of `sorry` and `admit`, and 55 project-declared axioms. The driver scans source text and invokes an axiom inspection tool. Its pass condition does not enforce a zero-axiom policy.
+The Lean summary records build exit code zero, zero whole-word occurrences of `sorry` and `admit`, and 55 project-declared axioms. The driver scans source text and invokes an axiom inspection tool. Its pass condition does not enforce a zero-axiom policy.
 
 ```text
 Source and pinned toolchain ──→ Lake build
@@ -846,9 +870,9 @@ Driver verdict ──→ Build and audit logs
 
 ### HCALC scalar assumptions
 
-The recorded audit lists 55 project axioms, including declarations in `Hcalc/RealStub.lean`, `Hcalc/Carrier.lean` and `Hcalc/Foundry.lean`. These include the abstract scalar type and operations, scalar and order laws, norms, Foundry state operations, finite maximum properties, and soft-scaling parameters. In particular, `real_contract_force_zero` is a declared assumption used by the fixed-point uniqueness argument. The recorded inventory is in [`logs/lean/axioms.txt`](logs/lean/axioms.txt).
+The audit lists 55 project axioms, including declarations in `Hcalc/RealStub.lean`, `Hcalc/Carrier.lean` and `Hcalc/Foundry.lean`. These include the abstract scalar type and operations, scalar and order laws, norms, Foundry state operations, finite maximum properties, and soft-scaling parameters. In particular, `real_contract_force_zero` is a declared assumption used by the fixed-point uniqueness argument. The inventory is in [`logs/lean/axioms.txt`](logs/lean/axioms.txt).
 
-The exact quantum, modular arithmetic and worker propositions form a separate computational layer. The absence of admitted proofs in the recorded scan is compatible with the presence of explicitly declared axioms.
+The exact quantum, modular arithmetic and worker propositions form a separate computational layer. The absence of admitted proofs in the current scan is compatible with the presence of explicitly declared axioms.
 
 
 ### Gaussian integer arithmetic
@@ -2052,7 +2076,7 @@ inductive Check where
 
 ### Local gate versus CI gate
 
-The committed GitHub Actions workflow runs on pushes and pull requests to `main`, plus manual dispatch. It installs Lean through elan, caches toolchain/build files, runs `lake build`, scans for proof escape words and invokes the axiom audit. The local `all` script covers the other backends.
+The GitHub Actions workflow runs on pushes and pull requests to `main`, plus manual dispatch. It installs Lean through elan, caches toolchain/build files, runs `lake build`, scans for proof escape words and invokes the axiom audit. It covers the Lean job only; the local `all` script covers the other backends.
 
 | Condition | Local `lake script run lean` | GitHub Actions workflow |
 |---|---|---|
@@ -2087,7 +2111,7 @@ lake script run quipper
 lake script run lean
 ```
 
-For a clean Lean build, `lake clean` followed by `lake build` discards prior build products. Preserve historical logs separately if they are required for comparison, because the driver writes its new results to the same log paths.
+For a clean Lean build, `lake clean` followed by `lake build` discards prior build products. Preserve earlier logs separately if they are required for comparison, because the driver writes its new results to the same log paths.
 
 ## Axiom audit: quantitative and qualitative interpretation
 
@@ -2100,7 +2124,7 @@ For a clean Lean build, `lake clean` followed by `lake build` discards prior bui
 ```
 
 
-The committed [`logs/lean/axioms.txt`](logs/lean/axioms.txt) enumerates 461 theorem declarations and 55 project axioms. Grouping its exact dependency sets into disjoint categories gives the following totals.
+The current [`logs/lean/axioms.txt`](logs/lean/axioms.txt) enumerates 461 theorem declarations and 55 project axioms. Grouping its exact dependency sets into disjoint categories gives the following totals.
 
 | Dependency category | Theorems | Share of 461 |
 |---|---:|---:|
@@ -2111,7 +2135,7 @@ The committed [`logs/lean/axioms.txt`](logs/lean/axioms.txt) enumerates 461 theo
 | At least one project-specific axiom | 57 | 12.36% |
 | Total | 461 | 100% (rounding) |
 
-The count is a property of the recorded audit, not a fresh scan. The audit iterates declarations in project-root modules, excludes internal names, selects theorem declarations and uses `collectAxioms` to group them by dependency set. A theorem count is not a measure of mathematical difficulty, coverage or independence.
+The count is from the audit run on November 25, 2026, on this checkout. The audit iterates declarations in project-root modules, excludes internal names, selects theorem declarations and uses `collectAxioms` to group them by dependency set. A theorem count is not a measure of mathematical difficulty, coverage or independence.
 
 ### Project axiom inventory
 
@@ -2179,7 +2203,7 @@ The table below reproduces the names reported by the audit, grouped by their sem
 
 The local driver also contains `partial def leanFiles` for filesystem traversal. 
 
-## Assurance matrix: established scope and stronger research obligations
+## Assurance matrix: established scope and remaining obligations
 
 
 | Area | Established in inspected revision | Stronger obligation |
@@ -2204,7 +2228,7 @@ The local driver also contains `partial def leanFiles` for filesystem traversal.
 
 ## Foundry F1: J, TableGen and native kernels
 
-The current workspace extends the original PIRTM–HCALC libraries with Foundry F1: prime-field arithmetic, signed monomial matrices, spectral analysis, additive recurrence, emission policies, numerical certification, and native SHA-256 interfaces. The original nested HCALC model remains distinct from the additive Foundry recurrence.
+The package extends the original PIRTM–HCALC libraries with Foundry F1: prime-field arithmetic, signed monomial matrices, spectral analysis, additive recurrence, emission policies, numerical certification, and native SHA-256 interfaces. The original nested HCALC model remains distinct from the additive Foundry recurrence.
 
 ```text
                     PIRTM × HCALC × Foundry F1

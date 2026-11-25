@@ -1,25 +1,54 @@
-✔ [2/28] Built PirtmHcalc.Agda.Core (338ms)
-✔ [3/28] Built PIRTM.Core (470ms)
-✔ [4/28] Built PirtmHcalc.Alloy.VacuityDemo (431ms)
-✔ [5/28] Built Hcalc.RealStub (580ms)
-✔ [6/28] Built PirtmHcalc.Alloy.HcalcMirror (525ms)
-✔ [7/28] Built PirtmHcalc.Data.Goldilocks (529ms)
-✔ [8/28] Built PirtmHcalc.Agda.Assumptions (331ms)
-✔ [9/28] Built PIRTM.Invariants (405ms)
-✔ [10/28] Built PirtmHcalc.Quantum.Exact (886ms)
-✔ [11/28] Built PIRTM.Quantum11 (568ms)
-✔ [12/28] Built Hcalc.Carrier (471ms)
-✔ [13/28] Built PIRTM (269ms)
-✔ [15/28] Built PirtmHcalc.Agda.Invariants (557ms)
-✔ [16/28] Built Hcalc.Foundry (388ms)
-✔ [17/28] Built Hcalc.Axioms (419ms)
-✔ [18/28] Built Hcalc.Pipeline (232ms)
-✔ [19/28] Built PirtmHcalc.Alloy.Hcalc (1.7s)
-✔ [20/28] Built Hcalc.Convergence (279ms)
-✔ [21/28] Built Hcalc.Invariants (234ms)
-✔ [22/28] Built Hcalc.Production (202ms)
-✔ [23/28] Built Hcalc (194ms)
-✔ [25/28] Built PirtmHcalc.Data.Agents (2.7s)
-✔ [26/28] Built PirtmHcalc.Data.Experiments (7.3s)
-✔ [27/28] Built PirtmHcalc (215ms)
+warning: /home/hatch/workspace/pirtm-hcalc/lakefile.lean:36:18: `String.trimRight` has been deprecated: Use `String.trimAsciiEnd` instead
+
+Note: The updated constant has a different type:
+  String → String.Slice
+instead of
+  String → String
+✔ [2/28] Built PirtmHcalc.Alloy.VacuityDemo (3.3s)
+✔ [3/28] Built PirtmHcalc.Agda.Core (3.4s)
+✔ [4/28] Built PIRTM.Core (3.8s)
+✔ [5/28] Built Hcalc.RealStub (5.1s)
+✔ [6/28] Built PirtmHcalc.Alloy.HcalcMirror (2.0s)
+✔ [7/28] Built PirtmHcalc.Data.Goldilocks (4.8s)
+✔ [8/28] Built PirtmHcalc.Quantum.Exact (6.4s)
+✔ [9/28] Built PirtmHcalc.Agda.Assumptions (4.1s)
+✔ [10/28] Built PIRTM.Quantum11 (5.8s)
+✔ [11/28] Built PirtmHcalc.Alloy.Hcalc (13s)
+✔ [12/28] Built PIRTM.Invariants (3.8s)
+✔ [13/28] Built Hcalc.Carrier (3.3s)
+✔ [14/28] Built PIRTM (2.3s)
+✔ [16/28] Built PirtmHcalc.Agda.Invariants (4.8s)
+✔ [17/28] Built Hcalc.Foundry (4.9s)
+✔ [18/28] Built Hcalc.Axioms (3.4s)
+✔ [19/28] Built Hcalc.Pipeline (1.0s)
+✔ [20/28] Built PirtmHcalc.Data.Agents (25s)
+✔ [21/28] Built Hcalc.Invariants (2.1s)
+✔ [22/28] Built Hcalc.Convergence (2.4s)
+✔ [23/28] Built Hcalc.Production (1.3s)
+✔ [24/28] Built Hcalc (943ms)
+✔ [26/28] Built PirtmHcalc.Data.Experiments (30s)
+✔ [27/28] Built PirtmHcalc (693ms)
 Build completed successfully (28 jobs).
+	Command being timed: "lake build"
+	User time (seconds): 47.53
+	System time (seconds): 19.09
+	Percent of CPU this job got: 84%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:19.31
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 936152
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 4823
+	Minor (reclaiming a frame) page faults: 545994
+	Voluntary context switches: 65810
+	Involuntary context switches: 55192
+	Swaps: 0
+	File system inputs: 1132112
+	File system outputs: 21160
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

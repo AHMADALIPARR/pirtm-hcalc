@@ -1,4 +1,4 @@
-== irdl  (2026-11-23 18:57:45 PST)
+== irdl  (2026-11-25 15:56:57 UTC)
 PASS parse mlir/dialects/pirtm.irdl.mlir
 PASS parse mlir/dialects/hcalc.irdl.mlir
 PASS custom/hcalc_pipeline.mlir: verifies with --irdl-file=hcalc (exit 0); rejected without it (exit 1)
