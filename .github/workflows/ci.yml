@@ -75,3 +75,23 @@ jobs:
           echo "- axiom audit: executed" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Full multi-language verification (J / MLIR / Quipper) is local: `lake script run all`." >> $GITHUB_STEP_SUMMARY
+
+  cpp:
+    name: Goldilocks C++ test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile and run Goldilocks C++ test
+        run: |
+          g++ --version
+          g++ -O2 -std=c++17 -o /tmp/test_goldilocks mlir/custom/Goldilocks/test_goldilocks.cpp
+          /tmp/test_goldilocks
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### Goldilocks C++ test" >> $GITHUB_STEP_SUMMARY
+          echo "- g++ compile + run test_goldilocks.cpp: completed" >> $GITHUB_STEP_SUMMARY

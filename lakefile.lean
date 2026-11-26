@@ -331,14 +331,35 @@ def runLean : IO UInt32 := do
   writeLog ("logs" / "lean" / "SUMMARY.txt") (← log.get)
   return if ok then 0 else 1
 
+def runCpp : IO UInt32 := do
+  let log ← IO.mkRef ""
+  say log s!"== cpp  ({← stamp})"
+  IO.FS.createDirAll (".lake" / "cpp")
+  let bin : FilePath := ".lake" / "cpp" / "test_goldilocks"
+  let c ← proc "g++" #["-O2", "-std=c++17", "-o", bin.toString, "mlir/custom/Goldilocks/test_goldilocks.cpp"]
+  say log s!"g++ -O2 -std=c++17 test_goldilocks.cpp -> exit {c.exitCode}"
+  if c.exitCode != 0 then
+    if !c.stderr.isEmpty then say log c.stderr
+    writeLog ("logs" / "cpp" / "SUMMARY.txt") (← log.get)
+    return 1
+  let r ← proc bin.toString #[]
+  writeLog ("logs" / "cpp" / "test_goldilocks.out") r.stdout
+  let first := (linesOf r.stdout).head?.getD ""
+  say log s!"test_goldilocks -> exit {r.exitCode}: {first}"
+  let ok := r.exitCode == 0 && (linesOf r.stdout).any (·.startsWith "PASS:")
+  say log s!"cpp: {if ok then "PASS" else "FAIL"}"
+  writeLog ("logs" / "cpp" / "SUMMARY.txt") (← log.get)
+  return if ok then 0 else 1
+
 script j do runJ
 script mlir do runMlir
 script irdl do runIrdl
 script quipper do runQuipper
 script lean do runLean
+script cpp do runCpp
 script all do
   let mut rcs := #[]
-  for (n, act) in [("j", runJ), ("mlir", runMlir), ("irdl", runIrdl), ("quipper", runQuipper), ("lean", runLean)] do
+  for (n, act) in [("j", runJ), ("mlir", runMlir), ("cpp", runCpp), ("irdl", runIrdl), ("quipper", runQuipper), ("lean", runLean)] do
     let rc ← act
     rcs := rcs.push s!"{n}: {if rc == 0 then "PASS" else "FAIL"}"
   let txt := String.intercalate "\n" rcs.toList
