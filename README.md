@@ -12,6 +12,7 @@
 [![CI](https://github.com/AHMADALIPARR/pirtm-hcalc/actions/workflows/ci.yml/badge.svg)](https://github.com/AHMADALIPARR/pirtm-hcalc/actions/workflows/ci.yml)
 [![j](https://img.shields.io/badge/j-PASS-brightgreen)](logs/j/SUMMARY.txt)
 [![mlir](https://img.shields.io/badge/mlir-PASS-brightgreen)](logs/mlir/SUMMARY.txt)
+[![cpp](https://img.shields.io/badge/cpp-PASS-brightgreen)](logs/cpp/SUMMARY.txt)
 [![irdl](https://img.shields.io/badge/irdl-PASS-brightgreen)](logs/mlir/IRDL.txt)
 [![quipper](https://img.shields.io/badge/quipper-PASS-brightgreen)](logs/quipper/SUMMARY.txt)
 [![lean](https://img.shields.io/badge/lean-PASS-brightgreen)](logs/lean/SUMMARY.txt)
