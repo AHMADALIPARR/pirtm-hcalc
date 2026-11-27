@@ -1,0 +1,12 @@
+AGPL-3.0-only — Foundry WebAssembly modules
+Copyright (C) 2026 AHMADALIPARR
+SPDX-License-Identifier: AGPL-3.0-only
+
+Every file under foundry/wasm-agpl/ is licensed under the GNU Affero General
+Public License, version 3 only. The full license text is the repository root
+LICENSE (AGPLv3, 661 lines); each module also carries the two-line AGPL
+header at its top.
+
+These modules were written from mathematical definitions and test vectors.
+No code, comment, or test vector was carried over from any Business Source
+License (BSL-2.0) or other non-AGPL source.

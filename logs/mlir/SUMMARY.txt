@@ -1,4 +1,4 @@
-== mlir  (2026-11-25 15:56:52 UTC)
+== mlir  (2026-11-26 21:24:43 PST)
 PASS main/hilbert11.mlir vs Python PIRTM (expected/hilbert11.txt): identical (21 lines)
 PASS main/quantum.mlir vs Python PIRTM (expected/quantum.txt): identical (19 lines)
 PASS main/oracle.mlir vs Python PIRTM (expected/oracle.txt): identical (17 lines)

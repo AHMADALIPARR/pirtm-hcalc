@@ -16,7 +16,7 @@
 [![irdl](https://img.shields.io/badge/irdl-PASS-brightgreen)](logs/mlir/IRDL.txt)
 [![quipper](https://img.shields.io/badge/quipper-PASS-brightgreen)](logs/quipper/SUMMARY.txt)
 [![lean](https://img.shields.io/badge/lean-PASS-brightgreen)](logs/lean/SUMMARY.txt)
-[![clean build](https://img.shields.io/badge/clean%20lake%20build-1m19s-blue)](logs/lean/build-clean.log)
+[![foundry](https://img.shields.io/badge/foundry-PASS-brightgreen)](foundry/README.md)
 
 **Ahmad Parr · Version 1.0.0**
 
