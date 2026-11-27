@@ -5,7 +5,7 @@ import Lake
 open Lake DSL System
 
 package «pirtm-hcalc» where
-  version := v!"0.1.0"
+  version := v!"1.0.0"
 
 @[default_target] lean_lib PIRTM
 @[default_target] lean_lib Hcalc

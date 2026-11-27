@@ -18,7 +18,7 @@
 [![lean](https://img.shields.io/badge/lean-PASS-brightgreen)](logs/lean/SUMMARY.txt)
 [![clean build](https://img.shields.io/badge/clean%20lake%20build-1m19s-blue)](logs/lean/build-clean.log)
 
-**Ahmad Parr · Version 0.1.0**
+**Ahmad Parr · Version 1.0.0**
 
 </div>
 

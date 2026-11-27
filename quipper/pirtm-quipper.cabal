@@ -3,7 +3,7 @@ cabal-version:       2.4
 -- Also licensed under the SnapKitty Opaque License (LicenseRef-SnapKitty-Opaque-1.0); see README.md.
 -- Copyright (C) 2026 Ahmad Parr
 name:                pirtm-quipper
-version:             0.1.0
+version:             1.0.0
 synopsis:            Quipper circuits for the PIRTM quantum layer
 license:             AGPL-3.0-only
 build-type:          Simple
