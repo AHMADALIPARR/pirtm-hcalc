@@ -7,8 +7,6 @@ file carries an AGPL-3.0-only header. No Python anywhere in this tree.
 
 | Path | What it is |
 | --- | --- |
-| `c/beal_check.h`, `c/beal_check.c` | Bounded Beal-instance checker over u32 operands (general library, no main). `beal_check_u32(a, b, c, x, y, z)` returns `BEAL32_EQUAL` / `NOT_EQUAL` / `OVERFLOW` / `INVALID`. Checked mul/add/pow widened to 64 bits; fast paths for bases 0 and 1. |
-| `c/beal_check_u32_test.c` | 35-check suite for the library. |
 | `goldilocks/types.h` | Goldilocks constants: `GOLDILOCKS_PRIME`, `P_64` (first 64 primes), tiers, `StepInfo`, `AceCertificate`, witness/audit types. |
 | `goldilocks/goldilocks.h`, `goldilocks/goldilocks.cpp` | Goldilocks field over p = 2^64 - 2^32 + 1: add/sub/mul/inv/pow, batch ops, `mulmod` via `__uint128_t` + Goldilocks folding. `add` uses a 128-bit sum, so it is correct for all canonical inputs including sums above 2^64. |
 | `goldilocks/sha256.h`, `goldilocks/sha256.cpp` | SHA-256: portable C++ path plus the NASM fast path under `PMC_SHA256_NASM`. |
@@ -59,11 +57,6 @@ banach `0 = PASS, 1 = FAIL, 2 = INVALID`; proof
 ## Build & test
 
 ```sh
-# C library (35 checks)
-gcc -std=c11 -Wall -Wextra -Werror -o /tmp/beal_u32_test \
-  foundry/c/beal_check.c foundry/c/beal_check_u32_test.c
-/tmp/beal_u32_test
-
 # Goldilocks C++ (15 checks)
 g++ -std=c++17 -Wall -Wextra -Werror -I foundry/goldilocks \
   foundry/goldilocks/goldilocks.cpp foundry/goldilocks/test_goldilocks.cpp \
@@ -89,7 +82,6 @@ foundry/wasm-agpl/build.sh
 
 ## Measured results (2026-11-26)
 
-- `beal_check_u32_test`: 35 checks, 0 failures.
 - `test_goldilocks`: 15/15 PASS.
 - `test_sha256` (NASM): 4/4 PASS (empty, "abc", 56-byte, 1M x 'a').
 - `test_sha256_cpp` (portable C++): 3/3 PASS.
